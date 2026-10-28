@@ -2,171 +2,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Munni N K | WordPress Developer</title>
-  <meta name="description" content="Munni N K - WordPress Developer specializing in WordPress, Elementor and responsive websites.">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #080d17;
-      color: #f3f6fc;
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: 88%; max-width: 1120px; margin: auto; }
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid #202b3d;
-      position: sticky; top: 0;
-      background: #080d17; z-index: 10;
-    }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-    .logo { font-size: 23px; font-weight: bold; }
-    .logo span, .blue { color: #0076d0; }
-    .nav-links { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14px; }
-    .nav-links a:hover { color: #39a5ff; }
-    .hero { padding: 105px 0 90px; }
-    .eyebrow { color: #39a5ff; text-transform: uppercase; letter-spacing: 3px; font-size: 12px; font-weight: bold; }
-    h1 { font-size: clamp(38px, 6vw, 68px); line-height: 1.12; margin: 20px 0; }
-    h2 { font-size: clamp(28px, 4vw, 38px); margin: 10px 0 22px; }
-    .hero p, .section-text { color: #aab6c9; max-width: 680px; }
-    .buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
-    .btn { padding: 12px 22px; border-radius: 5px; font-weight: bold; display: inline-block; }
-    .primary { background: #0076d0; color: white; }
-    .secondary { border: 1px solid #43516a; }
-    section { padding: 75px 0; border-top: 1px solid #172235; }
-    .section-label { color: #39a5ff; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; }
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 30px; }
-    .card { padding: 25px; border: 1px solid #263247; background: #0e1625; border-radius: 10px; }
-    .card h3 { margin-bottom: 10px; }
-    .card p { color: #aab6c9; font-size: 14px; }
-    .tag { display: inline-block; color: #69bdff; background: #102c46; padding: 4px 9px; border-radius: 4px; font-size: 12px; margin: 12px 5px 0 0; }
-    .skills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 25px; }
-    .skills span { padding: 9px 14px; background: #101c2d; border: 1px solid #263247; border-radius: 5px; font-size: 14px; }
-    .contact-box { background: #0e1625; border: 1px solid #263247; border-radius: 10px; padding: 30px; margin-top: 25px; }
-    footer { padding: 25px 0; color: #8997ac; font-size: 13px; text-align: center; }
-    @media (max-width: 650px) {
-      .container { width: 90%; }
-      nav { align-items: flex-start; flex-direction: column; }
-      .nav-links { gap: 12px; }
-      .hero { padding: 70px 0; }
-      .grid { grid-template-columns: 1fr; }
-      section { padding: 55px 0; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171813">
+<meta name="description" content="Munni N K — WordPress Developer and Elementor Specialist. Explore website development projects and technical skills.">
+<title>Munni N K | WordPress Developer & Elementor Specialist</title>
+
+<style>
+:root {
+  --ink: #171813;
+  --paper: #f5f3ed;
+  --white: #fffefa;
+  --gold: #C9A66B;
+  --gold-dark: #98733d;
+  --muted: #77796f;
+  --line: rgba(23,24,19,.13);
+  --max: 1120px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; font-size: 15px; }
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body.menu-open { overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.wrap { width: min(var(--max), calc(100% - 44px)); margin: auto; }
+::selection { background: var(--gold); color: var(--ink); }
+
+/* NAVIGATION */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(245,243,237,.94);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  min-height: 68px; display: flex; align-items: center;
+  justify-content: space-between; gap: 20px;
+}
+.brand { font-size: 1rem; font-weight: 800; letter-spacing: -.04em; }
+.brand span { color: var(--gold-dark); }
+.nav-links { display: flex; align-items: center; gap: 25px; }
+.nav-links a { font-size: .82rem; font-weight: 600; transition: color .2s; }
+.nav-links a:hover { color: var(--gold-dark); }
+.nav-links .nav-contact {
+  border: 1px solid var(--line); padding: 8px 15px; border-radius: 30px;
+}
+.menu-toggle {
+  display: none; background: transparent; border: 1px solid var(--line);
+  border-radius: 50%; width: 40px; height: 40px; cursor: pointer;
+}
+.menu-toggle span {
+  display: block; width: 16px; height: 2px; margin: 4px auto;
+  background: var(--ink);
+}
+
+/* HERO */
+.hero {
+  min-height: 590px; display: grid; place-items: center;
+  position: relative; overflow: hidden; isolation: isolate;
+  background: var(--ink); color: #f1eee5;
+  text-align: center; padding: 90px 0 75px;
+}
+.hero::before {
+  content: ""; position: absolute; z-index: -1;
+  width: min(72vw, 720px); aspect-ratio: 1;
+  border: 1px solid rgba(201,166,107,.17);
+  border-radius: 50%; left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 0 65px rgba(201,166,107,.025),
+              0 0 0 130px rgba(201,166,107,.018);
+  animation: orbit 35s linear infinite;
+}
+.hero::after {
+  content: ""; position: absolute; z-index: -1;
+  width: 360px; height: 360px; right: -130px; top: -190px;
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(201,166,107,.2),transparent 70%);
+}
+.hero-inner { max-width: 850px; margin: auto; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  color: var(--gold-dark); text-transform: uppercase;
+  letter-spacing: .16em; font-size: .7rem; font-weight: 800;
+}
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+.hero .eyebrow { color: var(--gold); }
+.availability {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 12px; border: 1px solid #ffffff2b;
+  border-radius: 30px; color: #d3d0c6;
+  font-size: .73rem; margin-bottom: 25px;
+}
+.availability i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #8ebd91; box-shadow: 0 0 0 4px #8ebd9122;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 6.6vw, 5.4rem);
+  line-height: 1.02; letter-spacing: -.065em;
+  font-weight: 760; margin: 20px 0;
+}
+.hero h1 em {
+  font-family: Georgia, serif; font-weight: 400;
+  color: var(--gold); letter-spacing: -.055em;
+}
+.hero-copy {
+  max-width: 560px; margin: auto; color: #b4b5aa;
+  font-size: .97rem; line-height: 1.8;
+}
+.actions {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 12px; margin-top: 28px;
+}
+.btn {
+  display: inline-flex; justify-content: center; align-items: center;
+  gap: 9px; padding: 11px 19px; min-height: 44px;
+  border: 1px solid transparent; border-radius: 30px;
+  font-size: .8rem; font-weight: 750;
+  transition: transform .25s, background .25s, color .25s;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-gold { background: var(--gold); color: #171813; }
+.btn-gold:hover { background: #dfbf8b; }
+.btn-outline { color: #f1eee5; border-color: #ffffff3a; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.hero-meta {
+  display: flex; justify-content: center; gap: 24px;
+  flex-wrap: wrap; margin-top: 45px;
+  color: #a5a69a; font-size: .7rem;
+  letter-spacing: .07em; text-transform: uppercase;
+}
+.hero-meta span::before { content: "•"; color: var(--gold); margin-right: 8px; }
+
+/* MOVING SKILLS STRIP */
+.ticker { background: var(--gold); overflow: hidden; color: var(--ink); }
+.ticker-track {
+  display: flex; width: max-content; gap: 28px;
+  padding: 12px 0; animation: ticker 35s linear infinite;
+  font-size: .7rem; font-weight: 850;
+  letter-spacing: .12em; text-transform: uppercase;
+}
+.ticker-track span::after { content: " ✳"; margin-left: 25px; }
+
+/* GENERAL SECTIONS */
+section { padding: 84px 0; }
+.section-head {
+  display: flex; justify-content: space-between;
+  align-items: end; gap: 24px; margin-bottom: 35px;
+}
+.section-head h2, .skills-intro h2 {
+  font-size: clamp(1.9rem, 4.4vw, 3.5rem);
+  line-height: 1.08; letter-spacing: -.06em; margin-top: 12px;
+}
+.section-head h2 em, .skills-intro h2 em {
+  font-family: Georgia, serif; font-weight: 400;
+}
+.section-note { max-width: 290px; color: var(--muted); font-size: .85rem; }
+.about-grid {
+  display: grid; grid-template-columns: .75fr 1.25fr;
+  gap: clamp(35px, 7vw, 90px); align-items: start;
+}
+.about-number {
+  font-size: clamp(4rem, 8vw, 6.5rem); line-height: 1;
+  letter-spacing: -.08em; color: var(--gold-dark); font-weight: 750;
+}
+.about-aside p { max-width: 250px; color: var(--muted); font-size: .87rem; margin-top: 15px; }
+.about-copy { font-size: 1.12rem; line-height: 1.85; }
+.about-copy strong { font-weight: 750; }
+.about-copy .muted { color: #85877d; }
+.detail-grid {
+  display: grid; grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px; margin-top: 25px;
+}
+.detail-card { padding: 17px; border: 1px solid var(--line); border-radius: 12px; }
+.detail-card small {
+  color: var(--gold-dark); text-transform: uppercase;
+  letter-spacing: .12em; font-size: .64rem; font-weight: 800;
+}
+.detail-card h3 { font-size: .93rem; margin-top: 6px; }
+
+/* PROJECTS */
+.projects-section { background: var(--white); }
+.project-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 15px; margin-bottom: 23px;
+}
+.filters { display: flex; flex-wrap: wrap; gap: 7px; }
+.filter-btn {
+  background: transparent; color: #686a61;
+  border: 1px solid var(--line); border-radius: 30px;
+  padding: 7px 12px; font-size: .72rem; cursor: pointer;
+  transition: background .2s,color .2s;
+}
+.filter-btn:hover, .filter-btn[aria-pressed="true"] {
+  background: var(--ink); color: white; border-color: var(--ink);
+}
+.project-count { color: var(--muted); font-size: .75rem; white-space: nowrap; }
+.project-grid {
+  display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 26px;
+}
+.project-card { min-width: 0; animation: cardIn .5s both; }
+.project-card.hidden { display: none; }
+.project-visual {
+  position: relative; overflow: hidden; aspect-ratio: 1.6;
+  border-radius: 12px; background: #e8e4da;
+  border: 1px solid var(--line);
+}
+.project-image {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: top; transition: transform .55s;
+}
+.project-card:hover .project-image { transform: scale(1.035); }
+
+/* Temporary website preview until you add your real screenshots */
+.project-art {
+  position: absolute; inset: 0; display: grid;
+  place-items: center; padding: 9%;
+  transition: transform .5s;
+}
+.project-card:hover .project-art { transform: scale(1.035); }
+.art-corporate { background: linear-gradient(135deg,#e7e3d8,#c9c3b5); }
+.art-energy { background: linear-gradient(135deg,#d9e0d9,#849b8d); }
+.art-tech { background: linear-gradient(135deg,#dfe3e6,#9aa9b7); }
+.art-shop { background: linear-gradient(135deg,#e9ded1,#c8ad94); }
+.art-dark { background: linear-gradient(135deg,#333b39,#111813); }
+.browser {
+  width: 100%; height: 100%; background: #fffefa;
+  border-radius: 5px; overflow: hidden;
+  box-shadow: 0 12px 35px #17181322;
+}
+.browser-top {
+  height: 12%; min-height: 14px; display: flex; align-items: center;
+  gap: 4px; padding: 0 8px; background: #eeece6;
+}
+.browser-top i { width: 5px; height: 5px; background: #c7c4ba; border-radius: 50%; }
+.browser-line { height: 4px; width: 35%; border-radius: 5px; background: #d7d4ca; margin-left: 8px; }
+.browser-content { padding: 9% 10%; }
+.mock-kicker { width: 28%; height: 4px; background: var(--gold-dark); margin-bottom: 7%; }
+.mock-title { height: 9px; width: 82%; background: #303129; margin-bottom: 4%; border-radius: 2px; }
+.mock-title.short { width: 57%; }
+.mock-copy { width: 85%; height: 3px; background: #c8c7be; margin-top: 5%; }
+.mock-copy.second { width: 65%; }
+.mock-button { width: 22%; height: 10px; border-radius: 2px; background: var(--gold); margin-top: 8%; }
+.mock-columns { display: flex; gap: 5%; margin-top: 8%; }
+.mock-tile { height: 30px; flex: 1; background: #e4e1d8; border-radius: 2px; }
+.project-open {
+  position: absolute; right: 12px; top: 12px;
+  display: grid; place-items: center; width: 35px; height: 35px;
+  border-radius: 50%; background: var(--gold); color: var(--ink);
+  font-size: 1.1rem; transition: transform .25s;
+}
+.project-open:hover { transform: rotate(45deg); }
+.project-info {
+  display: flex; justify-content: space-between; align-items: start;
+  gap: 12px; padding-top: 14px;
+}
+.project-info h3 { font-size: 1rem; letter-spacing: -.02em; }
+.project-info p { color: var(--muted); font-size: .79rem; margin-top: 3px; }
+.project-type {
+  color: var(--gold-dark); border: 1px solid var(--line);
+  border-radius: 20px; padding: 4px 9px;
+  font-size: .64rem; white-space: nowrap;
+}
+.project-note { color: var(--muted); font-size: .77rem; margin-top: 25px; }
+
+/* SKILLS */
+.skills-section { background: #eeece4; }
+.skills-layout {
+  display: grid; grid-template-columns: .85fr 1.15fr;
+  gap: clamp(35px, 7vw, 85px);
+}
+.skills-intro p { color: var(--muted); font-size: .9rem; margin-top: 18px; max-width: 360px; }
+.skill-row { padding: 17px 0; border-bottom: 1px solid var(--line); }
+.skill-row h3 { font-size: .95rem; margin-bottom: 5px; }
+.skill-row p { color: var(--muted); font-size: .82rem; }
+
+/* WORK APPROACH */
+.process-grid {
+  display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px;
+}
+.process-card { padding-top: 18px; border-top: 1px solid var(--line); }
+.process-number { color: var(--gold-dark); font-size: .75rem; font-weight: 800; }
+.process-card h3 { font-size: .97rem; margin: 14px 0 7px; }
+.process-card p { color: var(--muted); font-size: .8rem; }
+
+/* CONTACT */
+.contact-panel {
+  display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px;
+  align-items: center; padding: clamp(25px,5vw,55px);
+  border-radius: 17px; background: var(--gold);
+}
+.contact-panel .eyebrow { color: #57452d; }
+.contact-panel h2 {
+  font-size: clamp(2rem,4.3vw,3.8rem);
+  line-height: 1.05; letter-spacing: -.06em; margin: 14px 0;
+}
+.contact-panel h2 em { font-family: Georgia,serif; font-weight: 400; }
+.contact-panel p { max-width: 490px; font-size: .87rem; }
+.contact-actions { display: flex; flex-direction: column; gap: 10px; }
+.contact-actions .btn { border-color: #17181355; justify-content: center; }
+.contact-actions .btn:hover { background: #171813; color: white; }
+footer { padding: 25px 0; font-size: .76rem; color: var(--muted); }
+.footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+.footer-links { display: flex; gap: 18px; }
+
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s,transform .7s; }
+.reveal.in-view { opacity: 1; transform: none; }
+.delay-1 { transition-delay: .12s; }
+.delay-2 { transition-delay: .22s; }
+@keyframes orbit { to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes ticker { to { transform: translateX(-50%); } }
+@keyframes cardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* TABLET */
+@media(max-width: 800px) {
+  .nav-links { gap: 14px; }
+  .about-grid,.skills-layout { grid-template-columns: 1fr; gap: 25px; }
+  .about-aside { position: static; }
+  .about-number { font-size: 4rem; }
+  .process-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .contact-panel { grid-template-columns: 1fr; }
+  .section-head { align-items: start; flex-direction: column; }
+  .section-note { max-width: 500px; }
+}
+
+/* MOBILE */
+@media(max-width: 640px) {
+  .wrap { width: calc(100% - 32px); }
+  section { padding: 62px 0; }
+  .nav { min-height: 62px; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    position: fixed; top: 62px; left: 0; right: 0;
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
+    padding: 12px 22px 22px; background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-140%); opacity: 0; pointer-events: none;
+    transition: transform .3s,opacity .3s;
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav-links a { padding: 12px 5px; font-size: .9rem; }
+  .nav-links .nav-contact { border: 0; padding: 12px 5px; }
+  .hero { min-height: 550px; padding: 75px 0 60px; }
+  .hero h1 { font-size: clamp(2.45rem,11vw,4rem); }
+  .hero-copy { font-size: .9rem; }
+  .hero-meta { gap: 12px; margin-top: 32px; font-size: .63rem; }
+  .hero::before { width: 110vw; }
+  .section-head h2,.skills-intro h2 { font-size: clamp(1.9rem,8vw,2.8rem); }
+  .project-grid { grid-template-columns: 1fr; gap: 24px; }
+  .project-toolbar { align-items: start; flex-direction: column; }
+  .project-info h3 { font-size: .96rem; }
+  .detail-grid { gap: 9px; }
+  .detail-card { padding: 13px; }
+  .detail-card h3 { font-size: .85rem; }
+  .process-grid { gap: 20px 14px; }
+  .contact-panel { padding: 25px 20px; }
+  .contact-panel h2 { font-size: 2.25rem; }
+  .footer-inner { flex-direction: column; }
+}
+@media(max-width: 380px) {
+  .hero h1 { font-size: 2.25rem; }
+  .hero-meta { flex-direction: column; align-items: center; }
+  .project-type { display: none; }
+}
+@media(prefers-reduced-motion: reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <nav class="container">
-      <a class="logo" href="#home">MUNNI<span>.</span></a>
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand">MUNNI <span>NK.</span></a>
+    <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#process">Approach</a>
+      <a href="#contact" class="nav-contact">Contact ↗</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="eyebrow">WordPress Developer · Kerala, India</div>
-        <h1>Building Websites<br>That Make an <span class="blue">Impact.</span></h1>
-        <p>I build responsive, user-friendly websites and landing pages using WordPress and Elementor, with a focus on clean layouts, usability and reliable website maintenance.</p>
-        <div class="buttons">
-          <a class="btn primary" href="#projects">Explore My Work ↗</a>
-          <a class="btn secondary" href="#contact">Get in Touch</a>
-        </div>
-      </div>
-    </section>
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div class="availability"><i></i> Open to remote opportunities</div>
+    <div class="eyebrow">WordPress Development · Web Design</div>
+    <h1>Building digital<br><em>experiences</em> that work.</h1>
+    <p class="hero-copy">
+      I'm Munni, a WordPress Developer and Elementor Specialist focused on
+      creating responsive, well-structured websites for businesses.
+    </p>
+    <div class="actions">
+      <a href="#projects" class="btn btn-gold">Explore My Work ↘</a>
+      <a href="#contact" class="btn btn-outline">Let's Connect ↗</a>
+    </div>
+    <div class="hero-meta">
+      <span>WordPress</span><span>Elementor</span><span>Responsive Design</span>
+    </div>
+  </div>
+</section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-label">A little about me</div>
-        <h2>Turning Ideas Into <span class="blue">Web Experiences.</span></h2>
-        <p class="section-text">I'm Munni N K, a WordPress Developer experienced in building and updating websites for client projects. I work primarily with WordPress and Elementor to create responsive pages, customize layouts and maintain website content. I also have knowledge of basic WooCommerce updates and on-page SEO.</p>
-        <div class="grid">
-          <div class="card">
-            <h3>Website Development</h3>
-            <p>WordPress website creation, Elementor page building, responsive layouts and website customization.</p>
-          </div>
-          <div class="card">
-            <h3>Website Support</h3>
-            <p>Website updates, content changes, basic troubleshooting and SEO improvements.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="ticker" aria-label="Technical skills">
+  <div class="ticker-track">
+    <span>WordPress</span><span>Elementor</span><span>Elementor Pro</span>
+    <span>HTML & CSS</span><span>Responsive Design</span><span>Website Maintenance</span>
+    <span>WordPress</span><span>Elementor</span><span>Elementor Pro</span>
+    <span>HTML & CSS</span><span>Responsive Design</span><span>Website Maintenance</span>
+  </div>
+</div>
 
-    <section id="skills">
-      <div class="container">
-        <div class="section-label">What I work with</div>
-        <h2>Skills & <span class="blue">Technologies.</span></h2>
-        <p class="section-text">Tools and technologies I use in website development and maintenance.</p>
-        <div class="skills">
-          <span>WordPress</span><span>Elementor</span>
-          <span>Elementor Pro</span><span>Responsive Design</span>
-          <span>HTML</span><span>CSS</span>
-          <span>WooCommerce — Basic</span><span>Wix</span>
-          <span>On-page SEO</span><span>Website Maintenance</span>
-          <span>Canva</span><span>Google Analytics</span>
-        </div>
+<section id="about" class="about-section">
+  <div class="wrap about-grid">
+    <div class="about-aside reveal">
+      <div class="eyebrow">A little about me</div>
+      <div class="about-number">01.</div>
+      <p>Practical website development with an eye for detail, structure and usability.</p>
+    </div>
+    <div class="reveal delay-1">
+      <p class="about-copy">
+        I am a <strong>WordPress Developer and Elementor Specialist</strong>
+        with around <strong>1.5 years of experience</strong> working on business
+        websites and page layouts. My work includes building and updating
+        WordPress pages, creating responsive layouts, maintaining websites,
+        and making visual improvements using Elementor, HTML and CSS.
+        <span class="muted">I enjoy turning project requirements into clear,
+        professional website experiences.</span>
+      </p>
+      <div class="detail-grid">
+        <div class="detail-card"><small>Primary focus</small><h3>WordPress Development</h3></div>
+        <div class="detail-card"><small>Page builder</small><h3>Elementor & Pro</h3></div>
+        <div class="detail-card"><small>Approach</small><h3>Responsive & User-focused</h3></div>
+        <div class="detail-card"><small>Work preference</small><h3>Remote Opportunities</h3></div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="projects">
-      <div class="container">
-        <div class="section-label">Selected work</div>
-        <h2>Projects I've <span class="blue">Worked On.</span></h2>
-        <p class="section-text">A selection of website projects and practical experience. Add verified live links and screenshots as you prepare each project for your portfolio.</p>
-        <div class="grid">
-          <article class="card">
-            <h3>Thaqva.com</h3>
-            <p>Affiliate website developed using WordPress and Elementor, with product pages structured for usability and SEO.</p>
-            <span class="tag">WordPress</span><span class="tag">Elementor</span><span class="tag">SEO</span>
-          </article>
-          <article class="card">
-            <h3>Corporate Website Projects</h3>
-            <p>Website page development, responsive layouts, content updates and design revisions for client websites.</p>
-            <span class="tag">WordPress</span><span class="tag">Responsive Design</span>
-          </article>
-          <article class="card">
-            <h3>Business Websites</h3>
-            <p>Experience building and updating business websites, organizing page content and improving website usability.</p>
-            <span class="tag">Elementor</span><span class="tag">Web Design</span>
-          </article>
-          <article class="card">
-            <h3>Landing Pages</h3>
-            <p>Landing page creation and layout customization for marketing campaigns and business requirements.</p>
-            <span class="tag">WordPress</span><span class="tag">Landing Pages</span>
-          </article>
-        </div>
+<section id="projects" class="projects-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Selected work</div>
+        <h2>Websites made with<br><em>purpose and precision.</em></h2>
       </div>
-    </section>
+      <p class="section-note">A selection of business websites and digital projects. Open a live website using the arrow on each card.</p>
+    </div>
 
-    <section id="contact">
-      <div class="container">
-        <div class="section-label">Let's connect</div>
-        <h2>Have a Project in <span class="blue">Mind?</span></h2>
-        <p class="section-text">I'm interested in remote WordPress Developer opportunities and website development projects.</p>
-        <div class="contact-box">
-          <p>Email: <a class="blue" href="mailto:munnimujeeb046@gmail.com">munnimujeeb046@gmail.com</a></p>
-          <p>Location: Kerala, India</p>
-          <p>Availability: Open to remote opportunities</p>
-          <div class="buttons">
-            <a class="btn primary" href="mailto:munnimujeeb046@gmail.com">Email Me ↗</a>
-          </div>
-        </div>
+    <div class="project-toolbar">
+      <div class="filters" aria-label="Filter projects">
+        <button class="filter-btn" data-filter="all" aria-pressed="true">All projects</button>
+        <button class="filter-btn" data-filter="corporate" aria-pressed="false">Corporate</button>
+        <button class="filter-btn" data-filter="technology" aria-pressed="false">Technology</button>
+        <button class="filter-btn" data-filter="commerce" aria-pressed="false">E-commerce</button>
+        <button class="filter-btn" data-filter="other" aria-pressed="false">Other</button>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container">© 2026 Munni N K · WordPress Developer Portfolio</div>
-  </footer>
+      <div class="project-count" id="project-count" aria-live="polite">18 projects</div>
+    </div>
+
+    <div class="project-grid">
+
+      <article class="project-card reveal" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-dark"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://citygategroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Open City Gate Group website">↗</a></div>
+        <div class="project-info"><div><h3>City Gate Group</h3><p>Engineering and construction website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="technology">
+        <div class="project-visual"><div class="project-art art-energy"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.nextgentechnology.ae/gamatech/" target="_blank" rel="noopener noreferrer" aria-label="Open GAMATECH website">↗</a></div>
+        <div class="project-info"><div><h3>GAMATECH</h3><p>Energy and petroleum services</p></div><span class="project-type">Technology</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.evoraet.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Evora website">↗</a></div>
+        <div class="project-info"><div><h3>Evora</h3><p>Business website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="technology">
+        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.nextgentechnology.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open Nextgen Technology website">↗</a></div>
+        <div class="project-info"><div><h3>Nextgen Technology</h3><p>Technology company website</p></div><span class="project-type">Technology</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.thezenithventures.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Zenith Ventures website">↗</a></div>
+        <div class="project-info"><div><h3>Zenith Ventures</h3><p>Corporate website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="other">
+        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
+        <div class="project-info"><div><h3>Global Minds</h3><p>Website project</p></div><span class="project-type">Other</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="other">
+        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
+        <div class="project-info"><div><h3>CBS</h3><p>Website project</p></div><span class="project-type">Other</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.primaxis.in/" target="_blank" rel="noopener noreferrer" aria-label="Open Primaxis website">↗</a></div>
+        <div class="project-info"><div><h3>Primaxis</h3><p>Business website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
+        <div class="project-info"><div><h3>Inlite Furnishing</h3><p>Business website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.rcbmaterials.com/" target="_blank" rel="noopener noreferrer" aria-label="Open RCB Materials website">↗</a></div>
+        <div class="project-info"><div><h3>RCB Materials</h3><p>Materials business website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="other">
+        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
+        <div class="project-info"><div><h3>MTIS</h3><p>Website project</p></div><span class="project-type">Other</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="other">
+        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
+        <div class="project-info"><div><h3>Shabeer V</h3><p>Website project</p></div><span class="project-type">Other</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-energy"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.miracoolpowdercoating.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Miracool website">↗</a></div>
+        <div class="project-info"><div><h3>Miracool</h3><p>Powder coating business website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-dark"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.emiratespowerlink.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open Emirates Power Link website">↗</a></div>
+        <div class="project-info"><div><h3>Emirates Power Link</h3><p>Electrical and power business website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="corporate">
+        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.sacredaccounting.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open Sacred Accounting website">↗</a></div>
+        <div class="project-info"><div><h3>Sacred Accounting</h3><p>Accounting services website</p></div><span class="project-type">Corporate</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="technology">
+        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.eazytechksa.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Eazy Tech KSA website">↗</a></div>
+        <div class="project-info"><div><h3>Eazy Tech KSA</h3><p>Technology business website</p></div><span class="project-type">Technology</span></div>
+      </article>
+
+      <article class="project-card reveal" data-category="other">
+        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.dcruzpd.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Dcruz website">↗</a></div>
+        <div class="project-info"><div><h3>Dcruz</h3><p>Wix website project</p></div><span class="project-type">Other</span></div>
+      </article>
+
+      <article class="project-card reveal delay-1" data-category="commerce">
+        <div class="project-visual"><div class="project-art art-shop"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.thaqva.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Thaqva website">↗</a></div>
+        <div class="project-info"><div><h3>Thaqva</h3><p>E-commerce website</p></div><span class="project-type">E-commerce</span></div>
+      </article>
+
+    </div>
+    <p class="project-note">Note: The project panels above are temporary previews. Replace them with genuine screenshots of your websites before using this portfolio for job applications.</p>
+  </div>
+</section>
+
+<section id="skills" class="skills-section">
+  <div class="wrap skills-layout">
+    <div class="skills-intro reveal">
+      <div class="eyebrow">Technical skills</div>
+      <h2>Tools for building <em>better websites.</em></h2>
+      <p>My focus is on website development, page design and keeping content clear and responsive across screen sizes.</p>
+    </div>
+    <div class="reveal delay-1">
+      <div class="skill-row"><h3>WordPress</h3><p>Page development, content updates and theme or plugin-based customisation.</p></div>
+      <div class="skill-row"><h3>Elementor & Elementor Pro</h3><p>Page building, layout design and responsive adjustments.</p></div>
+      <div class="skill-row"><h3>HTML & CSS</h3><p>Front-end basics, styling and visual refinements.</p></div>
+      <div class="skill-row"><h3>Responsive Design</h3><p>Layouts designed to adapt across desktop, tablet and mobile screens.</p></div>
+      <div class="skill-row"><h3>Website Maintenance</h3><p>Routine updates, content changes and basic troubleshooting.</p></div>
+      <div class="skill-row"><h3>Additional Knowledge</h3><p>Basic WooCommerce updates and on-page SEO.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">My approach</div><h2>Considered at every <em>step.</em></h2></div>
+      <p class="section-note">An organised approach to website tasks, from understanding requirements to reviewing the finished page.</p>
+    </div>
+    <div class="process-grid">
+      <article class="process-card reveal"><div class="process-number">01 /</div><h3>Understand</h3><p>Clarify the page purpose, content and project requirements.</p></article>
+      <article class="process-card reveal delay-1"><div class="process-number">02 /</div><h3>Structure</h3><p>Organise content into a clear and intuitive page layout.</p></article>
+      <article class="process-card reveal delay-2"><div class="process-number">03 /</div><h3>Build & refine</h3><p>Create the page and adjust spacing, styling and responsive behaviour.</p></article>
+      <article class="process-card reveal delay-1"><div class="process-number">04 /</div><h3>Review</h3><p>Check the layout across different screens and make final updates.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel reveal">
+      <div>
+        <div class="eyebrow">Get in touch</div>
+        <h2>Let's build something<br><em>meaningful.</em></h2>
+        <p>I'm open to remote WordPress Developer opportunities and suitable website projects. If my experience fits what you're looking for, I'd be happy to connect.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn" href="mailto:munnimujeeb046@gmail.com">Email Me ↗</a>
+        <a class="btn" href="#projects">Explore My Projects ↑</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Munni N K. Designed with care.</div>
+    <div class="footer-links"><a href="#home">Back to top ↑</a><a href="mailto:munnimujeeb046@gmail.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+const menuButton = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+function closeMenu() {
+  navLinks.classList.remove('open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open navigation menu');
+  document.body.classList.remove('menu-open');
+}
+
+menuButton.addEventListener('click', () => {
+  const open = menuButton.getAttribute('aria-expanded') === 'true';
+  menuButton.setAttribute('aria-expanded', String(!open));
+  menuButton.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
+  navLinks.classList.toggle('open', !open);
+  document.body.classList.toggle('menu-open', !open);
+});
+
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 640) closeMenu();
+});
+
+const revealItems = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealItems.forEach(item => observer.observe(item));
+} else {
+  revealItems.forEach(item => item.classList.add('in-view'));
+}
+
+const filterButtons = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.project-card');
+const projectCount = document.getElementById('project-count');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    let count = 0;
+
+    filterButtons.forEach(item => {
+      item.setAttribute('aria-pressed', String(item === button));
+    });
+
+    cards.forEach(card => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('hidden', !show);
+      if (show) count++;
+    });
+
+    projectCount.textContent = count + (count === 1 ? ' project' : ' projects');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
