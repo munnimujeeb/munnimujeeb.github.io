@@ -3,623 +3,593 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#171813">
-<meta name="description" content="Munni N K — WordPress Developer and Elementor Specialist. Explore website development projects and technical skills.">
-<title>Munni N K | WordPress Developer & Elementor Specialist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="Munni N K — WordPress Developer and Elementor Specialist. Selected website projects, experience and technical skills.">
+<title>Munni N K — WordPress Developer</title>
 
 <style>
 :root {
-  --ink: #171813;
-  --paper: #f5f3ed;
-  --white: #fffefa;
-  --gold: #C9A66B;
-  --gold-dark: #98733d;
-  --muted: #77796f;
-  --line: rgba(23,24,19,.13);
-  --max: 1120px;
+  --black:#111110;
+  --dark:#1b1b19;
+  --cream:#f4f3ef;
+  --white:#fffefa;
+  --gold:#c9a66b;
+  --muted:#77776f;
+  --line:rgba(25,25,22,.13);
+  --width:1160px;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; font-size: 15px; }
-body {
-  font-family: Inter, Arial, sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px;font-size:14px}
+body{
+  background:var(--cream);color:var(--black);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased
 }
-body.menu-open { overflow: hidden; }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; }
-button, a { -webkit-tap-highlight-color: transparent; }
-.wrap { width: min(var(--max), calc(100% - 44px)); margin: auto; }
-::selection { background: var(--gold); color: var(--ink); }
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+.wrap{width:min(var(--width),calc(100% - 48px));margin:auto}
+section{padding:92px 0;position:relative}
+::selection{background:var(--gold);color:var(--black)}
+.eyebrow{
+  display:flex;align-items:center;gap:9px;
+  font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.16em;font-weight:750
+}
+.eyebrow:before{content:"";width:20px;height:1px;background:var(--gold)}
+.muted{color:var(--muted)}
+.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+.section-title{
+  font-size:clamp(2rem,4.2vw,3.5rem);
+  line-height:1.08;letter-spacing:-.065em;font-weight:650
+}
+.section-intro{max-width:370px;color:var(--muted);font-size:.87rem}
 
-/* NAVIGATION */
-header {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(245,243,237,.94);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--line);
+/* FLOATING HEADER */
+.site-header{
+  position:fixed;top:17px;left:50%;transform:translateX(-50%);
+  z-index:100;width:min(820px,calc(100% - 34px));
+  background:rgba(250,249,245,.88);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:50px;box-shadow:0 8px 35px #0000000a
 }
-.nav {
-  min-height: 68px; display: flex; align-items: center;
-  justify-content: space-between; gap: 20px;
+.nav{
+  min-height:54px;padding:0 10px 0 23px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px
 }
-.brand { font-size: 1rem; font-weight: 800; letter-spacing: -.04em; }
-.brand span { color: var(--gold-dark); }
-.nav-links { display: flex; align-items: center; gap: 25px; }
-.nav-links a { font-size: .82rem; font-weight: 600; transition: color .2s; }
-.nav-links a:hover { color: var(--gold-dark); }
-.nav-links .nav-contact {
-  border: 1px solid var(--line); padding: 8px 15px; border-radius: 30px;
+.brand{font-size:.95rem;font-weight:850;letter-spacing:-.05em;white-space:nowrap}
+.brand span{color:#9e7a44}
+.nav-links{display:flex;align-items:center;gap:25px}
+.nav-links a{font-size:.77rem;font-weight:550;transition:color .2s}
+.nav-links a:hover{color:#a17b42}
+.nav-cta{
+  background:var(--black);color:white;padding:9px 16px;
+  border-radius:30px;font-size:.74rem!important
 }
-.menu-toggle {
-  display: none; background: transparent; border: 1px solid var(--line);
-  border-radius: 50%; width: 40px; height: 40px; cursor: pointer;
-}
-.menu-toggle span {
-  display: block; width: 16px; height: 2px; margin: 4px auto;
-  background: var(--ink);
+.nav-cta:hover{background:#333!important;color:white!important}
+.menu-toggle{
+  display:none;width:38px;height:38px;border:0;border-radius:50%;
+  background:var(--black);color:white;cursor:pointer;font-size:1.2rem
 }
 
 /* HERO */
-.hero {
-  min-height: 590px; display: grid; place-items: center;
-  position: relative; overflow: hidden; isolation: isolate;
-  background: var(--ink); color: #f1eee5;
-  text-align: center; padding: 90px 0 75px;
+.hero{
+  min-height:630px;background:var(--black);color:#f7f5ef;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:125px 0 62px;position:relative;isolation:isolate;overflow:hidden
 }
-.hero::before {
-  content: ""; position: absolute; z-index: -1;
-  width: min(72vw, 720px); aspect-ratio: 1;
-  border: 1px solid rgba(201,166,107,.17);
-  border-radius: 50%; left: 50%; top: 50%;
-  transform: translate(-50%,-50%);
-  box-shadow: 0 0 0 65px rgba(201,166,107,.025),
-              0 0 0 130px rgba(201,166,107,.018);
-  animation: orbit 35s linear infinite;
+.hero:before{
+  content:"";position:absolute;z-index:-1;
+  width:560px;height:560px;border-radius:50%;
+  border:1px solid #c9a66b19;left:50%;top:49%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 70px #c9a66b08,0 0 0 140px #c9a66b05;
+  animation:slowOrbit 55s linear infinite
 }
-.hero::after {
-  content: ""; position: absolute; z-index: -1;
-  width: 360px; height: 360px; right: -130px; top: -190px;
-  border-radius: 50%;
-  background: radial-gradient(circle,rgba(201,166,107,.2),transparent 70%);
+.hero:after{
+  content:"";position:absolute;z-index:-1;
+  width:400px;height:400px;right:-240px;bottom:-270px;
+  background:#c9a66b16;border-radius:50%;filter:blur(35px)
 }
-.hero-inner { max-width: 850px; margin: auto; }
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 9px;
-  color: var(--gold-dark); text-transform: uppercase;
-  letter-spacing: .16em; font-size: .7rem; font-weight: 800;
+.hero-inner{max-width:860px;margin:auto}
+.hero .eyebrow{justify-content:center;color:var(--gold)}
+.hero-kicker{
+  color:#aaa99f;font-size:.75rem;letter-spacing:.09em;
+  text-transform:uppercase;margin-bottom:22px
 }
-.eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
-.hero .eyebrow { color: var(--gold); }
-.availability {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 7px 12px; border: 1px solid #ffffff2b;
-  border-radius: 30px; color: #d3d0c6;
-  font-size: .73rem; margin-bottom: 25px;
+.hero h1{
+  font-size:clamp(3.5rem,8vw,6.6rem);line-height:.98;
+  letter-spacing:-.078em;font-weight:650;margin:18px 0 24px
 }
-.availability i {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #8ebd91; box-shadow: 0 0 0 4px #8ebd9122;
+.hero h1 em{color:var(--gold);font-weight:400}
+.hero-copy{
+  max-width:460px;margin:auto;color:#b9b8b0;
+  font-size:.95rem;line-height:1.85
 }
-.hero h1 {
-  font-size: clamp(2.6rem, 6.6vw, 5.4rem);
-  line-height: 1.02; letter-spacing: -.065em;
-  font-weight: 760; margin: 20px 0;
+.hero-actions{
+  display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:29px
 }
-.hero h1 em {
-  font-family: Georgia, serif; font-weight: 400;
-  color: var(--gold); letter-spacing: -.055em;
+.btn{
+  min-height:43px;display:inline-flex;align-items:center;justify-content:center;
+  gap:9px;padding:11px 19px;border-radius:30px;
+  font-size:.79rem;font-weight:700;transition:transform .25s,background .25s,color .25s
 }
-.hero-copy {
-  max-width: 560px; margin: auto; color: #b4b5aa;
-  font-size: .97rem; line-height: 1.8;
+.btn:hover{transform:translateY(-3px)}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:#dfc18e}
+.btn-outline{border:1px solid #ffffff38;color:white}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-bottom{
+  display:flex;justify-content:center;gap:25px;flex-wrap:wrap;
+  margin-top:47px;color:#999990;font-size:.69rem;
+  text-transform:uppercase;letter-spacing:.1em
 }
-.actions {
-  display: flex; justify-content: center; flex-wrap: wrap;
-  gap: 12px; margin-top: 28px;
-}
-.btn {
-  display: inline-flex; justify-content: center; align-items: center;
-  gap: 9px; padding: 11px 19px; min-height: 44px;
-  border: 1px solid transparent; border-radius: 30px;
-  font-size: .8rem; font-weight: 750;
-  transition: transform .25s, background .25s, color .25s;
-}
-.btn:hover { transform: translateY(-3px); }
-.btn-gold { background: var(--gold); color: #171813; }
-.btn-gold:hover { background: #dfbf8b; }
-.btn-outline { color: #f1eee5; border-color: #ffffff3a; }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-.hero-meta {
-  display: flex; justify-content: center; gap: 24px;
-  flex-wrap: wrap; margin-top: 45px;
-  color: #a5a69a; font-size: .7rem;
-  letter-spacing: .07em; text-transform: uppercase;
-}
-.hero-meta span::before { content: "•"; color: var(--gold); margin-right: 8px; }
+.hero-bottom span:before{content:"✳";color:var(--gold);margin-right:8px}
 
-/* MOVING SKILLS STRIP */
-.ticker { background: var(--gold); overflow: hidden; color: var(--ink); }
-.ticker-track {
-  display: flex; width: max-content; gap: 28px;
-  padding: 12px 0; animation: ticker 35s linear infinite;
-  font-size: .7rem; font-weight: 850;
-  letter-spacing: .12em; text-transform: uppercase;
+/* SLIDING CAROUSEL */
+.carousel-section{
+  background:#e9e7e0;padding:22px 0 25px;overflow:hidden
 }
-.ticker-track span::after { content: " ✳"; margin-left: 25px; }
+.carousel-heading{
+  display:flex;align-items:center;justify-content:space-between;gap:15px;
+  margin-bottom:15px
+}
+.carousel-heading p{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.carousel-controls{display:flex;gap:7px}
+.carousel-controls button{
+  width:32px;height:32px;border:1px solid var(--line);
+  border-radius:50%;background:transparent;cursor:pointer;transition:.2s
+}
+.carousel-controls button:hover{background:var(--black);color:white}
+.carousel-viewport{overflow:hidden}
+.carousel-track{
+  display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;scroll-behavior:smooth;padding:2px 1px 7px
+}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-item{
+  flex:0 0 225px;min-height:76px;scroll-snap-align:start;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 18px;background:#f7f6f1;border:1px solid #ffffff;
+  border-radius:12px;transition:transform .25s,border-color .25s
+}
+.carousel-item:hover{transform:translateY(-3px);border-color:var(--gold)}
+.carousel-item strong{font-size:.85rem;line-height:1.3}
+.carousel-item small{display:block;font-size:.67rem;color:var(--muted);margin-top:4px}
+.carousel-item .arrow{font-size:1.15rem;color:#9e7a44}
 
-/* GENERAL SECTIONS */
-section { padding: 84px 0; }
-.section-head {
-  display: flex; justify-content: space-between;
-  align-items: end; gap: 24px; margin-bottom: 35px;
+/* ABOUT */
+.about-section{
+  background:var(--white);
+  background-image:radial-gradient(#b6a88e15 .7px,transparent .7px);
+  background-size:17px 17px
 }
-.section-head h2, .skills-intro h2 {
-  font-size: clamp(1.9rem, 4.4vw, 3.5rem);
-  line-height: 1.08; letter-spacing: -.06em; margin-top: 12px;
+.about-layout{
+  display:grid;grid-template-columns:.75fr 1.25fr;
+  gap:clamp(40px,8vw,110px);align-items:start
 }
-.section-head h2 em, .skills-intro h2 em {
-  font-family: Georgia, serif; font-weight: 400;
+.sticky-column{position:sticky;top:105px;align-self:start}
+.about-aside .section-title{margin-top:17px}
+.about-aside .section-title em{color:#9d7a46}
+.about-index{font-size:5rem;line-height:1;letter-spacing:-.09em;margin-top:35px;color:#c9a66b}
+.about-aside .section-intro{margin-top:16px}
+.about-content{padding-top:4px}
+.about-content .lead{font-size:1.28rem;line-height:1.7;letter-spacing:-.025em}
+.about-content p+p{margin-top:17px}
+.about-content .body-copy{font-size:.9rem;color:var(--muted);line-height:1.9}
+.timeline{margin-top:33px;border-top:1px solid var(--line)}
+.timeline-item{
+  display:grid;grid-template-columns:125px 1fr;gap:18px;
+  padding:19px 0;border-bottom:1px solid var(--line)
 }
-.section-note { max-width: 290px; color: var(--muted); font-size: .85rem; }
-.about-grid {
-  display: grid; grid-template-columns: .75fr 1.25fr;
-  gap: clamp(35px, 7vw, 90px); align-items: start;
-}
-.about-number {
-  font-size: clamp(4rem, 8vw, 6.5rem); line-height: 1;
-  letter-spacing: -.08em; color: var(--gold-dark); font-weight: 750;
-}
-.about-aside p { max-width: 250px; color: var(--muted); font-size: .87rem; margin-top: 15px; }
-.about-copy { font-size: 1.12rem; line-height: 1.85; }
-.about-copy strong { font-weight: 750; }
-.about-copy .muted { color: #85877d; }
-.detail-grid {
-  display: grid; grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 12px; margin-top: 25px;
-}
-.detail-card { padding: 17px; border: 1px solid var(--line); border-radius: 12px; }
-.detail-card small {
-  color: var(--gold-dark); text-transform: uppercase;
-  letter-spacing: .12em; font-size: .64rem; font-weight: 800;
-}
-.detail-card h3 { font-size: .93rem; margin-top: 6px; }
+.timeline-date{font-size:.74rem;color:#9a7847;font-weight:750}
+.timeline-item h3{font-size:.93rem;font-weight:750}
+.timeline-item p{font-size:.78rem;color:var(--muted);margin-top:3px}
 
-/* PROJECTS */
-.projects-section { background: var(--white); }
-.project-toolbar {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 15px; margin-bottom: 23px;
+/* WORK */
+.work-section{
+  background:var(--cream);
+  background-image:radial-gradient(#9f927b13 .7px,transparent .7px);
+  background-size:19px 19px
 }
-.filters { display: flex; flex-wrap: wrap; gap: 7px; }
-.filter-btn {
-  background: transparent; color: #686a61;
-  border: 1px solid var(--line); border-radius: 30px;
-  padding: 7px 12px; font-size: .72rem; cursor: pointer;
-  transition: background .2s,color .2s;
+.work-header{
+  display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:29px
 }
-.filter-btn:hover, .filter-btn[aria-pressed="true"] {
-  background: var(--ink); color: white; border-color: var(--ink);
+.work-header .section-title{margin-top:12px}
+.work-header .section-intro{max-width:300px}
+.project-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 18px
 }
-.project-count { color: var(--muted); font-size: .75rem; white-space: nowrap; }
-.project-grid {
-  display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 26px;
+.project-card{min-width:0;animation:fadeUp .45s both}
+.project-card.is-hidden{display:none}
+.project-preview{
+  aspect-ratio:1.48;position:relative;overflow:hidden;
+  border-radius:10px;background:#e5e2d9;border:1px solid #ffffff;
+  padding:8%;display:flex;align-items:center;justify-content:center
 }
-.project-card { min-width: 0; animation: cardIn .5s both; }
-.project-card.hidden { display: none; }
-.project-visual {
-  position: relative; overflow: hidden; aspect-ratio: 1.6;
-  border-radius: 12px; background: #e8e4da;
-  border: 1px solid var(--line);
+.project-preview:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,#c9a66b16,transparent 55%);
+  transition:opacity .3s
 }
-.project-image {
-  width: 100%; height: 100%; object-fit: cover;
-  object-position: top; transition: transform .55s;
+.project-card:hover .project-preview:before{opacity:0}
+.preview-window{
+  width:100%;height:100%;position:relative;overflow:hidden;
+  background:#fbfaf6;border-radius:4px;
+  box-shadow:0 9px 25px #17181318;transition:transform .4s
 }
-.project-card:hover .project-image { transform: scale(1.035); }
-
-/* Temporary website preview until you add your real screenshots */
-.project-art {
-  position: absolute; inset: 0; display: grid;
-  place-items: center; padding: 9%;
-  transition: transform .5s;
+.project-card:hover .preview-window{transform:scale(1.035) translateY(-2px)}
+.preview-bar{
+  height:12%;min-height:12px;background:#e9e7e0;
+  display:flex;align-items:center;gap:4px;padding:0 8px
 }
-.project-card:hover .project-art { transform: scale(1.035); }
-.art-corporate { background: linear-gradient(135deg,#e7e3d8,#c9c3b5); }
-.art-energy { background: linear-gradient(135deg,#d9e0d9,#849b8d); }
-.art-tech { background: linear-gradient(135deg,#dfe3e6,#9aa9b7); }
-.art-shop { background: linear-gradient(135deg,#e9ded1,#c8ad94); }
-.art-dark { background: linear-gradient(135deg,#333b39,#111813); }
-.browser {
-  width: 100%; height: 100%; background: #fffefa;
-  border-radius: 5px; overflow: hidden;
-  box-shadow: 0 12px 35px #17181322;
+.preview-bar i{width:4px;height:4px;border-radius:50%;background:#aaa99f}
+.preview-content{padding:9% 10%}
+.preview-label{height:3px;width:26%;background:#a07c47;margin-bottom:8%}
+.preview-line{height:7px;width:85%;background:#33342e;margin-bottom:4%;border-radius:2px}
+.preview-line.short{width:56%}
+.preview-copy{height:3px;width:85%;background:#d4d1c8;margin-top:7%}
+.preview-copy.short{width:60%}
+.preview-button{height:9px;width:24%;background:var(--gold);margin-top:9%;border-radius:2px}
+.preview-blocks{display:flex;gap:5%;margin-top:8%}
+.preview-blocks i{height:26px;flex:1;background:#e7e4db;border-radius:2px}
+.preview-energy{background:#d9e0d9}
+.preview-tech{background:#dce2e7}
+.preview-dark{background:#343a35}
+.preview-warm{background:#e7dbce}
+.preview-blue{background:#dce2e9}
+.preview-green{background:#dbe3dc}
+.project-overlay{
+  position:absolute;inset:0;display:flex;align-items:flex-start;
+  justify-content:space-between;padding:12px;pointer-events:none
 }
-.browser-top {
-  height: 12%; min-height: 14px; display: flex; align-items: center;
-  gap: 4px; padding: 0 8px; background: #eeece6;
+.project-tag{
+  padding:5px 9px;border-radius:30px;background:#fffefaeb;
+  font-size:.62rem;font-weight:700
 }
-.browser-top i { width: 5px; height: 5px; background: #c7c4ba; border-radius: 50%; }
-.browser-line { height: 4px; width: 35%; border-radius: 5px; background: #d7d4ca; margin-left: 8px; }
-.browser-content { padding: 9% 10%; }
-.mock-kicker { width: 28%; height: 4px; background: var(--gold-dark); margin-bottom: 7%; }
-.mock-title { height: 9px; width: 82%; background: #303129; margin-bottom: 4%; border-radius: 2px; }
-.mock-title.short { width: 57%; }
-.mock-copy { width: 85%; height: 3px; background: #c8c7be; margin-top: 5%; }
-.mock-copy.second { width: 65%; }
-.mock-button { width: 22%; height: 10px; border-radius: 2px; background: var(--gold); margin-top: 8%; }
-.mock-columns { display: flex; gap: 5%; margin-top: 8%; }
-.mock-tile { height: 30px; flex: 1; background: #e4e1d8; border-radius: 2px; }
-.project-open {
-  position: absolute; right: 12px; top: 12px;
-  display: grid; place-items: center; width: 35px; height: 35px;
-  border-radius: 50%; background: var(--gold); color: var(--ink);
-  font-size: 1.1rem; transition: transform .25s;
+.project-link{
+  pointer-events:auto;display:grid;place-items:center;width:33px;height:33px;
+  border-radius:50%;background:var(--gold);color:var(--black);
+  font-size:1.05rem;transition:transform .25s
 }
-.project-open:hover { transform: rotate(45deg); }
-.project-info {
-  display: flex; justify-content: space-between; align-items: start;
-  gap: 12px; padding-top: 14px;
+.project-link:hover{transform:rotate(45deg)}
+.project-link.inactive{opacity:.6;cursor:default}
+.project-info{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:10px;padding-top:12px
 }
-.project-info h3 { font-size: 1rem; letter-spacing: -.02em; }
-.project-info p { color: var(--muted); font-size: .79rem; margin-top: 3px; }
-.project-type {
-  color: var(--gold-dark); border: 1px solid var(--line);
-  border-radius: 20px; padding: 4px 9px;
-  font-size: .64rem; white-space: nowrap;
+.project-info h3{font-size:.91rem;letter-spacing:-.025em;line-height:1.4}
+.project-info p{font-size:.73rem;color:var(--muted);margin-top:3px}
+.project-number{font-size:.7rem;color:#9d7a46;white-space:nowrap}
+.view-more-wrap{text-align:center;margin-top:35px}
+.view-more{
+  border:1px solid var(--black);background:transparent;color:var(--black);
+  border-radius:30px;padding:12px 21px;font-size:.79rem;font-weight:750;cursor:pointer;
+  transition:background .25s,color .25s
 }
-.project-note { color: var(--muted); font-size: .77rem; margin-top: 25px; }
+.view-more:hover{background:var(--black);color:white}
+.work-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:18px}
 
 /* SKILLS */
-.skills-section { background: #eeece4; }
-.skills-layout {
-  display: grid; grid-template-columns: .85fr 1.15fr;
-  gap: clamp(35px, 7vw, 85px);
+.skills-section{
+  background:#e9e7df;
+  background-image:radial-gradient(#a69b8618 .7px,transparent .7px);
+  background-size:18px 18px
 }
-.skills-intro p { color: var(--muted); font-size: .9rem; margin-top: 18px; max-width: 360px; }
-.skill-row { padding: 17px 0; border-bottom: 1px solid var(--line); }
-.skill-row h3 { font-size: .95rem; margin-bottom: 5px; }
-.skill-row p { color: var(--muted); font-size: .82rem; }
+.skills-layout{
+  display:grid;grid-template-columns:.8fr 1.2fr;
+  gap:clamp(40px,8vw,100px);align-items:start
+}
+.skills-sticky .section-title{margin-top:15px}
+.skills-sticky .section-title em{color:#9e7a44}
+.skills-sticky .section-intro{margin-top:17px}
+.skill-list{border-top:1px solid var(--line)}
+.skill-item{
+  display:grid;grid-template-columns:40px 1fr;gap:13px;
+  padding:20px 0;border-bottom:1px solid var(--line)
+}
+.skill-num{font-size:.7rem;color:#9d7a46;padding-top:3px}
+.skill-item h3{font-size:.94rem}
+.skill-item p{font-size:.79rem;color:var(--muted);margin-top:4px}
 
-/* WORK APPROACH */
-.process-grid {
-  display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px;
-}
-.process-card { padding-top: 18px; border-top: 1px solid var(--line); }
-.process-number { color: var(--gold-dark); font-size: .75rem; font-weight: 800; }
-.process-card h3 { font-size: .97rem; margin: 14px 0 7px; }
-.process-card p { color: var(--muted); font-size: .8rem; }
+/* SIMPLE APPROACH */
+.approach-section{background:var(--white)}
+.approach-header{margin-bottom:32px}
+.approach-header .section-title{margin-top:12px}
+.approach-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.approach-item{border-top:1px solid var(--line);padding-top:17px}
+.approach-item span{font-size:.7rem;color:#9d7a46}
+.approach-item h3{font-size:.9rem;margin-top:14px}
+.approach-item p{font-size:.78rem;color:var(--muted);margin-top:6px}
 
 /* CONTACT */
-.contact-panel {
-  display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px;
-  align-items: center; padding: clamp(25px,5vw,55px);
-  border-radius: 17px; background: var(--gold);
+.contact-section{background:var(--black);color:#f7f5ef}
+.contact-panel{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
+  padding:clamp(28px,5vw,58px);border:1px solid #ffffff15;border-radius:17px;
+  background:radial-gradient(ellipse at 85% 100%,#c9a66b1b,transparent 52%),#1b1b19
 }
-.contact-panel .eyebrow { color: #57452d; }
-.contact-panel h2 {
-  font-size: clamp(2rem,4.3vw,3.8rem);
-  line-height: 1.05; letter-spacing: -.06em; margin: 14px 0;
+.contact-panel .eyebrow{color:var(--gold)}
+.contact-panel h2{
+  font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.02;
+  letter-spacing:-.07em;margin:16px 0
 }
-.contact-panel h2 em { font-family: Georgia,serif; font-weight: 400; }
-.contact-panel p { max-width: 490px; font-size: .87rem; }
-.contact-actions { display: flex; flex-direction: column; gap: 10px; }
-.contact-actions .btn { border-color: #17181355; justify-content: center; }
-.contact-actions .btn:hover { background: #171813; color: white; }
-footer { padding: 25px 0; font-size: .76rem; color: var(--muted); }
-.footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
-.footer-links { display: flex; gap: 18px; }
-
-/* ANIMATIONS */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s,transform .7s; }
-.reveal.in-view { opacity: 1; transform: none; }
-.delay-1 { transition-delay: .12s; }
-.delay-2 { transition-delay: .22s; }
-@keyframes orbit { to { transform: translate(-50%,-50%) rotate(360deg); } }
-@keyframes ticker { to { transform: translateX(-50%); } }
-@keyframes cardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-
-/* TABLET */
-@media(max-width: 800px) {
-  .nav-links { gap: 14px; }
-  .about-grid,.skills-layout { grid-template-columns: 1fr; gap: 25px; }
-  .about-aside { position: static; }
-  .about-number { font-size: 4rem; }
-  .process-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .contact-panel { grid-template-columns: 1fr; }
-  .section-head { align-items: start; flex-direction: column; }
-  .section-note { max-width: 500px; }
+.contact-panel h2 em{color:var(--gold)}
+.contact-panel p{font-size:.87rem;color:#b6b5ad;max-width:440px}
+.contact-links{display:flex;flex-direction:column;gap:11px}
+.contact-link{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:15px 17px;border:1px solid #ffffff2b;border-radius:10px;
+  font-size:.82rem;transition:background .25s,border-color .25s
 }
+.contact-link:hover{background:#c9a66b17;border-color:var(--gold)}
+.contact-link small{display:block;color:#a5a49a;font-size:.67rem}
+.contact-link span:last-child{color:var(--gold);font-size:1.1rem}
+footer{padding:22px 0;background:var(--black);color:#999990;font-size:.72rem}
+.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.footer-links{display:flex;gap:18px}
+.footer-links a:hover{color:var(--gold)}
 
-/* MOBILE */
-@media(max-width: 640px) {
-  .wrap { width: calc(100% - 32px); }
-  section { padding: 62px 0; }
-  .nav { min-height: 62px; }
-  .menu-toggle { display: block; }
-  .nav-links {
-    position: fixed; top: 62px; left: 0; right: 0;
-    display: flex; flex-direction: column; align-items: stretch; gap: 0;
-    padding: 12px 22px 22px; background: var(--paper);
-    border-bottom: 1px solid var(--line);
-    transform: translateY(-140%); opacity: 0; pointer-events: none;
-    transition: transform .3s,opacity .3s;
+/* MOTION */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.1s}
+.delay-2{transition-delay:.18s}
+.delay-3{transition-delay:.26s}
+@keyframes slowOrbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESPONSIVE */
+@media(min-width:641px){
+  .about-layout,.skills-layout{align-items:stretch}
+}
+@media(max-width:900px){
+  .nav-links{gap:16px}
+  .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .approach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .about-layout,.skills-layout{gap:38px}
+}
+@media(max-width:640px){
+  html{font-size:14px}
+  .wrap{width:calc(100% - 32px)}
+  section{padding:65px 0}
+  .site-header{top:10px;width:calc(100% - 22px)}
+  .nav{min-height:49px;padding-left:17px}
+  .menu-toggle{display:block}
+  .nav-links{
+    display:none;position:absolute;top:58px;left:0;right:0;
+    padding:12px;background:#f8f7f2;border:1px solid var(--line);
+    border-radius:17px;box-shadow:0 15px 35px #00000012
   }
-  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-  .nav-links a { padding: 12px 5px; font-size: .9rem; }
-  .nav-links .nav-contact { border: 0; padding: 12px 5px; }
-  .hero { min-height: 550px; padding: 75px 0 60px; }
-  .hero h1 { font-size: clamp(2.45rem,11vw,4rem); }
-  .hero-copy { font-size: .9rem; }
-  .hero-meta { gap: 12px; margin-top: 32px; font-size: .63rem; }
-  .hero::before { width: 110vw; }
-  .section-head h2,.skills-intro h2 { font-size: clamp(1.9rem,8vw,2.8rem); }
-  .project-grid { grid-template-columns: 1fr; gap: 24px; }
-  .project-toolbar { align-items: start; flex-direction: column; }
-  .project-info h3 { font-size: .96rem; }
-  .detail-grid { gap: 9px; }
-  .detail-card { padding: 13px; }
-  .detail-card h3 { font-size: .85rem; }
-  .process-grid { gap: 20px 14px; }
-  .contact-panel { padding: 25px 20px; }
-  .contact-panel h2 { font-size: 2.25rem; }
-  .footer-inner { flex-direction: column; }
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .nav-links a{padding:11px 12px;font-size:.85rem}
+  .nav-links .nav-cta{text-align:center;margin-top:5px}
+  .hero{min-height:590px;padding:120px 0 60px}
+  .hero h1{font-size:clamp(3.1rem,13vw,4.8rem)}
+  .hero-copy{font-size:.88rem}
+  .hero-bottom{gap:12px;margin-top:35px;font-size:.62rem}
+  .hero:before{width:400px;height:400px}
+  .carousel-item{flex-basis:190px;min-height:70px}
+  .about-layout,.skills-layout{grid-template-columns:1fr;gap:28px}
+  .sticky-column{position:static}
+  .about-index{font-size:3.7rem;margin-top:20px}
+  .about-aside .section-intro{margin-top:8px}
+  .about-content .lead{font-size:1.1rem}
+  .timeline-item{grid-template-columns:105px 1fr;gap:10px}
+  .work-header{align-items:flex-start;flex-direction:column;gap:13px}
+  .project-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:21px 12px}
+  .project-preview{aspect-ratio:1.2;padding:7%}
+  .project-info h3{font-size:.83rem}
+  .project-info p{font-size:.69rem}
+  .project-number{font-size:.63rem}
+  .project-tag{font-size:.56rem}
+  .project-link{width:29px;height:29px}
+  .approach-grid{gap:20px 15px}
+  .contact-panel{grid-template-columns:1fr;gap:25px;padding:25px 19px}
+  .contact-panel h2{font-size:2.8rem}
+  .footer-inner{flex-direction:column}
 }
-@media(max-width: 380px) {
-  .hero h1 { font-size: 2.25rem; }
-  .hero-meta { flex-direction: column; align-items: center; }
-  .project-type { display: none; }
+@media(max-width:380px){
+  .project-grid{grid-template-columns:1fr}
+  .project-preview{aspect-ratio:1.5}
+  .hero h1{font-size:2.9rem}
 }
-@media(prefers-reduced-motion: reduce) {
-  *,*::before,*::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    scroll-behavior:auto!important;transition-duration:.01ms!important
   }
-  .reveal { opacity: 1; transform: none; }
+  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 
 <body>
-<header>
-  <div class="wrap nav">
+<header class="site-header">
+  <div class="nav">
     <a href="#home" class="brand">MUNNI <span>NK.</span></a>
-    <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-    <nav class="nav-links" aria-label="Main navigation">
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
-      <a href="#process">Approach</a>
-      <a href="#contact" class="nav-contact">Contact ↗</a>
+      <a href="#contact" class="nav-cta">Let's Talk ↗</a>
     </nav>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
 </header>
 
 <main>
 <section class="hero" id="home">
   <div class="wrap hero-inner">
-    <div class="availability"><i></i> Open to remote opportunities</div>
-    <div class="eyebrow">WordPress Development · Web Design</div>
-    <h1>Building digital<br><em>experiences</em> that work.</h1>
-    <p class="hero-copy">
-      I'm Munni, a WordPress Developer and Elementor Specialist focused on
-      creating responsive, well-structured websites for businesses.
+    <p class="hero-kicker reveal">Munni N K · Website Development</p>
+    <div class="eyebrow reveal delay-1">WordPress Developer & Elementor Specialist</div>
+    <h1 class="reveal delay-1">Thoughtful design.<br><em>Better websites.</em></h1>
+    <p class="hero-copy reveal delay-2">
+      I build and refine business websites with WordPress, Elementor and responsive design.
     </p>
-    <div class="actions">
-      <a href="#projects" class="btn btn-gold">Explore My Work ↘</a>
-      <a href="#contact" class="btn btn-outline">Let's Connect ↗</a>
+    <div class="hero-actions reveal delay-2">
+      <a href="#projects" class="btn btn-gold">Explore my work ↘</a>
+      <a href="#contact" class="btn btn-outline">Get in touch ↗</a>
     </div>
-    <div class="hero-meta">
-      <span>WordPress</span><span>Elementor</span><span>Responsive Design</span>
+    <div class="hero-bottom reveal delay-3">
+      <span>WordPress</span><span>Elementor</span><span>HTML & CSS</span>
     </div>
   </div>
 </section>
 
-<div class="ticker" aria-label="Technical skills">
-  <div class="ticker-track">
-    <span>WordPress</span><span>Elementor</span><span>Elementor Pro</span>
-    <span>HTML & CSS</span><span>Responsive Design</span><span>Website Maintenance</span>
-    <span>WordPress</span><span>Elementor</span><span>Elementor Pro</span>
-    <span>HTML & CSS</span><span>Responsive Design</span><span>Website Maintenance</span>
-  </div>
-</div>
-
-<section id="about" class="about-section">
-  <div class="wrap about-grid">
-    <div class="about-aside reveal">
-      <div class="eyebrow">A little about me</div>
-      <div class="about-number">01.</div>
-      <p>Practical website development with an eye for detail, structure and usability.</p>
+<!-- PROJECT CAROUSEL -->
+<section class="carousel-section" aria-label="Featured website projects">
+  <div class="wrap">
+    <div class="carousel-heading">
+      <p>Selected projects · A closer look</p>
+      <div class="carousel-controls">
+        <button type="button" id="carousel-prev" aria-label="Previous projects">←</button>
+        <button type="button" id="carousel-next" aria-label="Next projects">→</button>
+      </div>
     </div>
-    <div class="reveal delay-1">
-      <p class="about-copy">
-        I am a <strong>WordPress Developer and Elementor Specialist</strong>
-        with around <strong>1.5 years of experience</strong> working on business
-        websites and page layouts. My work includes building and updating
-        WordPress pages, creating responsive layouts, maintaining websites,
-        and making visual improvements using Elementor, HTML and CSS.
-        <span class="muted">I enjoy turning project requirements into clear,
-        professional website experiences.</span>
-      </p>
-      <div class="detail-grid">
-        <div class="detail-card"><small>Primary focus</small><h3>WordPress Development</h3></div>
-        <div class="detail-card"><small>Page builder</small><h3>Elementor & Pro</h3></div>
-        <div class="detail-card"><small>Approach</small><h3>Responsive & User-focused</h3></div>
-        <div class="detail-card"><small>Work preference</small><h3>Remote Opportunities</h3></div>
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="carousel-track">
+        <a class="carousel-item" href="https://citygategroup.com/" target="_blank" rel="noopener noreferrer">
+          <div><strong>City Gate Group</strong><small>Engineering & construction</small></div><span class="arrow">↗</span>
+        </a>
+        <a class="carousel-item" href="https://www.nextgentechnology.ae/gamatech/" target="_blank" rel="noopener noreferrer">
+          <div><strong>GAMATECH</strong><small>Energy & petroleum services</small></div><span class="arrow">↗</span>
+        </a>
+        <a class="carousel-item" href="https://www.thezenithventures.com/" target="_blank" rel="noopener noreferrer">
+          <div><strong>Zenith Ventures</strong><small>Corporate website</small></div><span class="arrow">↗</span>
+        </a>
+        <a class="carousel-item" href="https://www.thaqva.com/" target="_blank" rel="noopener noreferrer">
+          <div><strong>Thaqva</strong><small>E-commerce</small></div><span class="arrow">↗</span>
+        </a>
+        <a class="carousel-item" href="https://www.eazytechksa.com/" target="_blank" rel="noopener noreferrer">
+          <div><strong>Eazy Tech KSA</strong><small>Technology</small></div><span class="arrow">↗</span>
+        </a>
+        <a class="carousel-item" href="https://www.sacredaccounting.ae/" target="_blank" rel="noopener noreferrer">
+          <div><strong>Sacred Accounting</strong><small>Accounting services</small></div><span class="arrow">↗</span>
+        </a>
+        <a class="carousel-item" href="#projects">
+          <div><strong>Explore all projects</strong><small>Browse the portfolio</small></div><span class="arrow">↓</span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="projects" class="projects-section">
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="wrap about-layout">
+    <aside class="sticky-column about-aside">
+      <div class="eyebrow">A little about me</div>
+      <h2 class="section-title">The person<br>behind the<br><em>pixels.</em></h2>
+      <div class="about-index">01.</div>
+      <p class="section-intro">Website development, thoughtful layouts and practical problem-solving.</p>
+    </aside>
+
+    <div class="about-content">
+      <p class="lead reveal">
+        I'm a <strong>WordPress Developer and Elementor Specialist</strong>
+        with experience building, updating and maintaining websites for businesses.
+      </p>
+      <p class="body-copy reveal delay-1">
+        My work focuses on creating clear page layouts, responsive designs and polished website experiences using WordPress, Elementor, HTML and CSS.
+      </p>
+      <p class="body-copy reveal delay-1">
+        I enjoy improving website structure, refining details and turning requirements into pages that look professional and work across different screen sizes.
+      </p>
+
+      <div class="timeline reveal delay-2">
+        <div class="timeline-item">
+          <div class="timeline-date">Oct 2024 – Apr 2025</div>
+          <div><h3>Web Development Intern</h3><p>Internship experience in website development.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">May 2025 – 15 Jul 2026</div>
+          <div><h3>WAP Ads</h3><p>Full-time employment · Website development and design.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">20 Jul – 7 Nov 2026</div>
+          <div><h3>Bitmore Creatives</h3><p>Website development and design.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="work-section" id="projects">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="work-header reveal">
       <div>
         <div class="eyebrow">Selected work</div>
-        <h2>Websites made with<br><em>purpose and precision.</em></h2>
+        <h2 class="section-title">A few things<br><span class="serif">I've worked on.</span></h2>
       </div>
-      <p class="section-note">A selection of business websites and digital projects. Open a live website using the arrow on each card.</p>
+      <p class="section-intro">A selection of websites across corporate, technology and e-commerce projects.</p>
     </div>
 
-    <div class="project-toolbar">
-      <div class="filters" aria-label="Filter projects">
-        <button class="filter-btn" data-filter="all" aria-pressed="true">All projects</button>
-        <button class="filter-btn" data-filter="corporate" aria-pressed="false">Corporate</button>
-        <button class="filter-btn" data-filter="technology" aria-pressed="false">Technology</button>
-        <button class="filter-btn" data-filter="commerce" aria-pressed="false">E-commerce</button>
-        <button class="filter-btn" data-filter="other" aria-pressed="false">Other</button>
-      </div>
-      <div class="project-count" id="project-count" aria-live="polite">18 projects</div>
+    <div class="project-grid" id="project-grid"></div>
+
+    <div class="view-more-wrap">
+      <button class="view-more" id="view-more" type="button">View more projects ↓</button>
     </div>
-
-    <div class="project-grid">
-
-      <article class="project-card reveal" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-dark"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://citygategroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Open City Gate Group website">↗</a></div>
-        <div class="project-info"><div><h3>City Gate Group</h3><p>Engineering and construction website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="technology">
-        <div class="project-visual"><div class="project-art art-energy"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.nextgentechnology.ae/gamatech/" target="_blank" rel="noopener noreferrer" aria-label="Open GAMATECH website">↗</a></div>
-        <div class="project-info"><div><h3>GAMATECH</h3><p>Energy and petroleum services</p></div><span class="project-type">Technology</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.evoraet.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Evora website">↗</a></div>
-        <div class="project-info"><div><h3>Evora</h3><p>Business website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="technology">
-        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.nextgentechnology.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open Nextgen Technology website">↗</a></div>
-        <div class="project-info"><div><h3>Nextgen Technology</h3><p>Technology company website</p></div><span class="project-type">Technology</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.thezenithventures.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Zenith Ventures website">↗</a></div>
-        <div class="project-info"><div><h3>Zenith Ventures</h3><p>Corporate website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="other">
-        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
-        <div class="project-info"><div><h3>Global Minds</h3><p>Website project</p></div><span class="project-type">Other</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="other">
-        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
-        <div class="project-info"><div><h3>CBS</h3><p>Website project</p></div><span class="project-type">Other</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.primaxis.in/" target="_blank" rel="noopener noreferrer" aria-label="Open Primaxis website">↗</a></div>
-        <div class="project-info"><div><h3>Primaxis</h3><p>Business website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
-        <div class="project-info"><div><h3>Inlite Furnishing</h3><p>Business website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.rcbmaterials.com/" target="_blank" rel="noopener noreferrer" aria-label="Open RCB Materials website">↗</a></div>
-        <div class="project-info"><div><h3>RCB Materials</h3><p>Materials business website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="other">
-        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
-        <div class="project-info"><div><h3>MTIS</h3><p>Website project</p></div><span class="project-type">Other</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="other">
-        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><span class="project-open" title="Project link not provided">↗</span></div>
-        <div class="project-info"><div><h3>Shabeer V</h3><p>Website project</p></div><span class="project-type">Other</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-energy"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.miracoolpowdercoating.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Miracool website">↗</a></div>
-        <div class="project-info"><div><h3>Miracool</h3><p>Powder coating business website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-dark"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.emiratespowerlink.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open Emirates Power Link website">↗</a></div>
-        <div class="project-info"><div><h3>Emirates Power Link</h3><p>Electrical and power business website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="corporate">
-        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.sacredaccounting.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open Sacred Accounting website">↗</a></div>
-        <div class="project-info"><div><h3>Sacred Accounting</h3><p>Accounting services website</p></div><span class="project-type">Corporate</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="technology">
-        <div class="project-visual"><div class="project-art art-tech"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.eazytechksa.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Eazy Tech KSA website">↗</a></div>
-        <div class="project-info"><div><h3>Eazy Tech KSA</h3><p>Technology business website</p></div><span class="project-type">Technology</span></div>
-      </article>
-
-      <article class="project-card reveal" data-category="other">
-        <div class="project-visual"><div class="project-art art-corporate"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.dcruzpd.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Dcruz website">↗</a></div>
-        <div class="project-info"><div><h3>Dcruz</h3><p>Wix website project</p></div><span class="project-type">Other</span></div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-category="commerce">
-        <div class="project-visual"><div class="project-art art-shop"><div class="browser"><div class="browser-top"><i></i><i></i><i></i><span class="browser-line"></span></div><div class="browser-content"><div class="mock-kicker"></div><div class="mock-title"></div><div class="mock-title short"></div><div class="mock-copy"></div><div class="mock-copy second"></div><div class="mock-button"></div><div class="mock-columns"><div class="mock-tile"></div><div class="mock-tile"></div></div></div></div></div><a class="project-open" href="https://www.thaqva.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Thaqva website">↗</a></div>
-        <div class="project-info"><div><h3>Thaqva</h3><p>E-commerce website</p></div><span class="project-type">E-commerce</span></div>
-      </article>
-
-    </div>
-    <p class="project-note">Note: The project panels above are temporary previews. Replace them with genuine screenshots of your websites before using this portfolio for job applications.</p>
+    <p class="work-note">Project previews are illustrative placeholders. Replace them with genuine website screenshots before sharing your portfolio.</p>
   </div>
 </section>
 
-<section id="skills" class="skills-section">
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
   <div class="wrap skills-layout">
-    <div class="skills-intro reveal">
+    <aside class="sticky-column skills-sticky">
       <div class="eyebrow">Technical skills</div>
-      <h2>Tools for building <em>better websites.</em></h2>
-      <p>My focus is on website development, page design and keeping content clear and responsive across screen sizes.</p>
-    </div>
-    <div class="reveal delay-1">
-      <div class="skill-row"><h3>WordPress</h3><p>Page development, content updates and theme or plugin-based customisation.</p></div>
-      <div class="skill-row"><h3>Elementor & Elementor Pro</h3><p>Page building, layout design and responsive adjustments.</p></div>
-      <div class="skill-row"><h3>HTML & CSS</h3><p>Front-end basics, styling and visual refinements.</p></div>
-      <div class="skill-row"><h3>Responsive Design</h3><p>Layouts designed to adapt across desktop, tablet and mobile screens.</p></div>
-      <div class="skill-row"><h3>Website Maintenance</h3><p>Routine updates, content changes and basic troubleshooting.</p></div>
-      <div class="skill-row"><h3>Additional Knowledge</h3><p>Basic WooCommerce updates and on-page SEO.</p></div>
+      <h2 class="section-title">The tools<br>behind the<br><em>work.</em></h2>
+      <p class="section-intro">A practical set of tools for building, styling and maintaining websites.</p>
+    </aside>
+
+    <div class="skill-list">
+      <div class="skill-item reveal"><span class="skill-num">01</span><div><h3>WordPress</h3><p>Website development, content updates and website maintenance.</p></div></div>
+      <div class="skill-item reveal"><span class="skill-num">02</span><div><h3>Elementor & Elementor Pro</h3><p>Page building, layout design and responsive adjustments.</p></div></div>
+      <div class="skill-item reveal"><span class="skill-num">03</span><div><h3>HTML & CSS</h3><p>Custom styling, front-end structure and visual refinements.</p></div></div>
+      <div class="skill-item reveal"><span class="skill-num">04</span><div><h3>Responsive Web Design</h3><p>Adapting layouts for desktop, tablet and mobile screens.</p></div></div>
+      <div class="skill-item reveal"><span class="skill-num">05</span><div><h3>Website Maintenance</h3><p>Routine content changes, updates and basic troubleshooting.</p></div></div>
+      <div class="skill-item reveal"><span class="skill-num">06</span><div><h3>Basic WooCommerce</h3><p>Basic edits and updates to e-commerce websites.</p></div></div>
+      <div class="skill-item reveal"><span class="skill-num">07</span><div><h3>Website Design Tools</h3><p>Visual assets and basic design work using Canva.</p></div></div>
     </div>
   </div>
 </section>
 
-<section id="process">
+<!-- APPROACH -->
+<section class="approach-section" id="approach">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div><div class="eyebrow">My approach</div><h2>Considered at every <em>step.</em></h2></div>
-      <p class="section-note">An organised approach to website tasks, from understanding requirements to reviewing the finished page.</p>
+    <div class="approach-header reveal">
+      <div class="eyebrow">How I work</div>
+      <h2 class="section-title">Simple process.<br><em class="serif">Thoughtful results.</em></h2>
     </div>
-    <div class="process-grid">
-      <article class="process-card reveal"><div class="process-number">01 /</div><h3>Understand</h3><p>Clarify the page purpose, content and project requirements.</p></article>
-      <article class="process-card reveal delay-1"><div class="process-number">02 /</div><h3>Structure</h3><p>Organise content into a clear and intuitive page layout.</p></article>
-      <article class="process-card reveal delay-2"><div class="process-number">03 /</div><h3>Build & refine</h3><p>Create the page and adjust spacing, styling and responsive behaviour.</p></article>
-      <article class="process-card reveal delay-1"><div class="process-number">04 /</div><h3>Review</h3><p>Check the layout across different screens and make final updates.</p></article>
+    <div class="approach-grid">
+      <article class="approach-item reveal"><span>01 /</span><h3>Understand</h3><p>Clarify the project requirements and purpose of the page.</p></article>
+      <article class="approach-item reveal delay-1"><span>02 /</span><h3>Structure</h3><p>Organise content into a clear and intuitive layout.</p></article>
+      <article class="approach-item reveal delay-2"><span>03 /</span><h3>Build & refine</h3><p>Develop the page and refine its design and responsiveness.</p></article>
+      <article class="approach-item reveal delay-3"><span>04 /</span><h3>Review</h3><p>Check the layout and make final improvements.</p></article>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
   <div class="wrap">
     <div class="contact-panel reveal">
       <div>
-        <div class="eyebrow">Get in touch</div>
-        <h2>Let's build something<br><em>meaningful.</em></h2>
-        <p>I'm open to remote WordPress Developer opportunities and suitable website projects. If my experience fits what you're looking for, I'd be happy to connect.</p>
+        <div class="eyebrow">Contact</div>
+        <h2>Have a project<br>in <em class="serif">mind?</em></h2>
+        <p>For website development opportunities, collaborations or enquiries, feel free to get in touch.</p>
       </div>
-      <div class="contact-actions">
-        <a class="btn" href="mailto:munnimujeeb046@gmail.com">Email Me ↗</a>
-        <a class="btn" href="#projects">Explore My Projects ↑</a>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:munnimujeeb046@gmail.com">
+          <span><small>Email</small>munnimujeeb046@gmail.com</span><span>↗</span>
+        </a>
+        <a class="contact-link" href="tel:+919446248976">
+          <span><small>Phone</small>+91 94462 48976</span><span>↗</span>
+        </a>
       </div>
     </div>
   </div>
@@ -628,72 +598,180 @@ footer { padding: 25px 0; font-size: .76rem; color: var(--muted); }
 
 <footer>
   <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Munni N K. Designed with care.</div>
-    <div class="footer-links"><a href="#home">Back to top ↑</a><a href="mailto:munnimujeeb046@gmail.com">Email</a></div>
+    <span>© <span id="year"></span> Munni N K</span>
+    <div class="footer-links"><a href="#home">Back to top ↑</a><a href="mailto:munnimujeeb046@gmail.com">Email ↗</a></div>
   </div>
 </footer>
 
 <script>
+/* MOBILE MENU */
 const menuButton = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-function closeMenu() {
-  navLinks.classList.remove('open');
-  menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-label', 'Open navigation menu');
-  document.body.classList.remove('menu-open');
-}
+const nav = document.querySelector('.nav-links');
 
 menuButton.addEventListener('click', () => {
-  const open = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-expanded', String(!open));
-  menuButton.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
-  navLinks.classList.toggle('open', !open);
-  document.body.classList.toggle('menu-open', !open);
+  const isOpen = nav.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  menuButton.textContent = isOpen ? '×' : '☰';
 });
 
-navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 640) closeMenu();
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open menu');
+    menuButton.textContent = '☰';
+  });
 });
 
-const revealItems = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observer = new IntersectionObserver((entries, obs) => {
+/* SCROLL REVEAL */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealElements = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window && !reduceMotion) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
-        obs.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-  revealItems.forEach(item => observer.observe(item));
+  }, {threshold: 0.12});
+
+  revealElements.forEach(element => revealObserver.observe(element));
 } else {
-  revealItems.forEach(item => item.classList.add('in-view'));
+  revealElements.forEach(element => element.classList.add('in-view'));
 }
 
-const filterButtons = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.project-card');
-const projectCount = document.getElementById('project-count');
+/* CAROUSEL CONTROLS */
+const track = document.getElementById('carousel-track');
+document.getElementById('carousel-prev').addEventListener('click', () => {
+  track.scrollBy({left: -245, behavior: reduceMotion ? 'auto' : 'smooth'});
+});
+document.getElementById('carousel-next').addEventListener('click', () => {
+  track.scrollBy({left: 245, behavior: reduceMotion ? 'auto' : 'smooth'});
+});
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const filter = button.dataset.filter;
-    let count = 0;
+/* PROJECT DATA
+   Real screenshots can be added later by replacing each preview panel
+   with an image element pointing to a file inside your GitHub images folder.
+*/
+const projects = [
+  {name:'City Gate Group',desc:'Engineering & construction',type:'Corporate',style:'preview-dark',url:'https://citygategroup.com/'},
+  {name:'GAMATECH',desc:'Energy & petroleum services',type:'Energy',style:'preview-energy',url:'https://www.nextgentechnology.ae/gamatech/'},
+  {name:'Zenith Ventures',desc:'Corporate website',type:'Corporate',style:'preview-blue',url:'https://www.thezenithventures.com/'},
+  {name:'Eazy Tech KSA',desc:'Technology business website',type:'Technology',style:'preview-tech',url:'https://www.eazytechksa.com/'},
+  {name:'Sacred Accounting',desc:'Accounting services',type:'Corporate',style:'preview-green',url:'https://www.sacredaccounting.ae/'},
+  {name:'Thaqva',desc:'E-commerce website',type:'E-commerce',style:'preview-warm',url:'https://www.thaqva.com/'},
+  {name:'Emirates Power Link',desc:'Power and electrical services',type:'Corporate',style:'preview-dark',url:'https://www.emiratespowerlink.ae/'},
+  {name:'Miracool',desc:'Powder coating business',type:'Corporate',style:'preview-energy',url:'https://www.miracoolpowdercoating.com/'},
+  {name:'Evora',desc:'Business website',type:'Corporate',style:'preview-warm',url:'https://www.evoraet.com/'},
+  {name:'RCB Materials',desc:'Materials business website',type:'Corporate',style:'preview-blue',url:'https://www.rcbmaterials.com/'},
+  {name:'Primaxis',desc:'Business website',type:'Corporate',style:'preview-green',url:'https://www.primaxis.in/'},
+  {name:'Nextgen Technology',desc:'Technology company website',type:'Technology',style:'preview-tech',url:'https://www.nextgentechnology.ae/'},
+  {name:'Dcruz',desc:'Wix website',type:'Other',style:'preview-warm',url:'https://www.dcruzpd.com/'},
+  {name:'SAT Consultancy',desc:'Consultancy website',type:'Corporate',style:'preview-blue',url:'https://satconsultancy.ae/'},
+  {name:'Global Minds',desc:'Website project',type:'Other',style:'preview-green',url:''},
+  {name:'CBS',desc:'Website project',type:'Other',style:'preview-tech',url:''},
+  {name:'Inlite Furnishing',desc:'Business website',type:'Corporate',style:'preview-warm',url:''},
+  {name:'MTIS',desc:'Website project',type:'Other',style:'preview-blue',url:''},
+  {name:'Shabeer V',desc:'Website project',type:'Other',style:'preview-dark',url:''}
+];
 
-    filterButtons.forEach(item => {
-      item.setAttribute('aria-pressed', String(item === button));
-    });
+const grid = document.getElementById('project-grid');
+const viewMore = document.getElementById('view-more');
+const initialCount = 6;
+let showAll = false;
 
-    cards.forEach(card => {
-      const show = filter === 'all' || card.dataset.category === filter;
-      card.classList.toggle('hidden', !show);
-      if (show) count++;
-    });
+function createPreview(style) {
+  return `
+    <div class="project-preview ${style}">
+      <div class="preview-window">
+        <div class="preview-bar"><i></i><i></i><i></i></div>
+        <div class="preview-content">
+          <div class="preview-label"></div>
+          <div class="preview-line"></div>
+          <div class="preview-line short"></div>
+          <div class="preview-copy"></div>
+          <div class="preview-copy short"></div>
+          <div class="preview-button"></div>
+          <div class="preview-blocks"><i></i><i></i></div>
+        </div>
+      </div>
+    </div>`;
+}
 
-    projectCount.textContent = count + (count === 1 ? ' project' : ' projects');
+function renderProjects() {
+  grid.innerHTML = '';
+
+  projects.forEach((project, index) => {
+    const card = document.createElement('article');
+    card.className = 'project-card reveal' + (index >= initialCount && !showAll ? ' is-hidden' : '');
+    card.style.animationDelay = (index % 3) * 70 + 'ms';
+
+    const preview = document.createElement('div');
+    preview.innerHTML = createPreview(project.style);
+    card.appendChild(preview.firstElementChild);
+
+    const overlay = document.createElement('div');
+    overlay.className = 'project-overlay';
+
+    const tag = document.createElement('span');
+    tag.className = 'project-tag';
+    tag.textContent = project.type;
+    overlay.appendChild(tag);
+
+    if (project.url) {
+      const link = document.createElement('a');
+      link.className = 'project-link';
+      link.href = project.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', 'Open ' + project.name + ' website');
+      link.textContent = '↗';
+      overlay.appendChild(link);
+    } else {
+      const placeholder = document.createElement('span');
+      placeholder.className = 'project-link inactive';
+      placeholder.setAttribute('aria-label', 'Project link not provided');
+      placeholder.textContent = '↗';
+      overlay.appendChild(placeholder);
+    }
+
+    card.querySelector('.project-preview').appendChild(overlay);
+
+    const info = document.createElement('div');
+    info.className = 'project-info';
+
+    const description = document.createElement('div');
+    const title = document.createElement('h3');
+    title.textContent = project.name;
+    const subtitle = document.createElement('p');
+    subtitle.textContent = project.desc;
+    description.append(title, subtitle);
+
+    const number = document.createElement('span');
+    number.className = 'project-number';
+    number.textContent = String(index + 1).padStart(2, '0');
+
+    info.append(description, number);
+    card.appendChild(info);
+    grid.appendChild(card);
   });
+
+  viewMore.textContent = showAll ? 'Show fewer projects ↑' : 'View more projects ↓';
+}
+renderProjects();
+
+viewMore.addEventListener('click', () => {
+  showAll = !showAll;
+  renderProjects();
+  if (showAll) {
+    document.querySelector('#projects').scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      block: 'start'
+    });
+  }
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
