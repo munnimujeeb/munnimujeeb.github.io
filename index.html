@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,6 @@
 <meta name="theme-color" content="#f8f8f4">
 <meta name="description" content="Munni N K — WordPress Developer specialising in responsive websites, Elementor and website maintenance.">
 <title>Munni N K | WordPress Developer</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +13,7 @@
 <style>
 :root {
   --bg: #f8f8f4;
-  --white: #ffffff;
+  --white: #fff;
   --ink: #20211e;
   --muted: #777970;
   --line: #e5e6df;
@@ -46,7 +44,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body::selection {
+::selection {
   background: var(--green);
   color: var(--ink);
 }
@@ -58,9 +56,6 @@ a {
 
 button {
   font: inherit;
-}
-
-button, a {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -75,7 +70,7 @@ img {
 }
 
 .section {
-  padding: 110px 0;
+  padding: 100px 0;
 }
 
 .section-kicker {
@@ -90,11 +85,11 @@ img {
   margin-bottom: 19px;
 }
 
-.section-kicker::before {
+.section-kicker:before {
   content: "";
   width: 27px;
   height: 2px;
-  background: var(--green-dark);
+  background: currentColor;
 }
 
 .section-heading {
@@ -121,9 +116,8 @@ img {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255,255,255,.91);
+  background: rgba(255,255,255,.92);
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(32,33,30,.07);
 }
 
@@ -142,7 +136,6 @@ img {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
   font-size: 15px;
-  letter-spacing: -.6px;
   white-space: nowrap;
 }
 
@@ -155,7 +148,7 @@ img {
   background: var(--ink);
   color: var(--green);
   font-size: 19px;
-  transition: transform .35s ease;
+  transition: transform .35s;
 }
 
 .brand:hover .brand-symbol {
@@ -176,7 +169,7 @@ img {
   transition: color .25s;
 }
 
-.nav-links a::after {
+.nav-links a:after {
   content: "";
   position: absolute;
   left: 0;
@@ -184,14 +177,14 @@ img {
   width: 0;
   height: 2px;
   background: var(--green-dark);
-  transition: width .3s ease;
+  transition: width .3s;
 }
 
 .nav-links a:hover {
   color: var(--ink);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover:after {
   width: 100%;
 }
 
@@ -205,7 +198,7 @@ img {
   padding: 12px 17px;
   font-size: 11px;
   font-weight: 600;
-  transition: background .3s, color .3s, transform .3s;
+  transition: .3s;
   white-space: nowrap;
 }
 
@@ -224,7 +217,7 @@ img {
   color: var(--ink);
 }
 
-/* HERO */
+/* HERO WITH ANIMATED BACKGROUND */
 
 .hero {
   position: relative;
@@ -237,26 +230,26 @@ img {
   background: var(--bg);
 }
 
-/* Banner image is optional. Remove the background-image layer if you prefer
-   the original light animated hero. */
-.hero::before {
+.hero:before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -8%;
   z-index: -2;
   background:
     linear-gradient(
       90deg,
-      rgba(248,248,244,.97) 0%,
-      rgba(248,248,244,.93) 38%,
-      rgba(248,248,244,.76) 62%,
-      rgba(248,248,244,.40) 100%
+      rgba(248,248,244,.96) 0%,
+      rgba(248,248,244,.91) 42%,
+      rgba(248,248,244,.69) 70%,
+      rgba(248,248,244,.48) 100%
     ),
-    url("assets/banner.jpg") center / cover no-repeat;
-  animation: heroImageIn 1.2s ease both;
+    url("assets/banner.jpg") center/cover no-repeat;
+  animation: heroImageIn 1.2s ease both,
+             slowPan 28s ease-in-out infinite alternate;
+  transform-origin: center;
 }
 
-.hero::after {
+.hero:after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -265,12 +258,30 @@ img {
   border-radius: 50%;
   right: -170px;
   top: -210px;
-  border: 1px solid rgba(80,100,50,.10);
+  border: 1px solid rgba(80,100,50,.12);
   box-shadow:
     0 0 0 35px rgba(80,100,50,.025),
     0 0 0 70px rgba(80,100,50,.025),
     0 0 0 105px rgba(80,100,50,.025);
-  animation: orbit 28s linear infinite;
+  animation: orbit 32s linear infinite;
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  z-index: -1;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  left: 48%;
+  top: 38%;
+  background: radial-gradient(
+    circle,
+    rgba(197,241,120,.20),
+    rgba(197,241,120,0) 70%
+  );
+  filter: blur(3px);
+  animation: glowDrift 13s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
@@ -284,7 +295,7 @@ img {
   align-items: center;
   gap: 10px;
   border: 1px solid rgba(80,100,50,.19);
-  background: rgba(255,255,255,.64);
+  background: rgba(255,255,255,.68);
   border-radius: 100px;
   padding: 8px 13px;
   margin-bottom: 27px;
@@ -346,7 +357,8 @@ img {
   border: 1px solid transparent;
   font-size: 11px;
   font-weight: 700;
-  transition: transform .25s, background .25s, border-color .25s, color .25s;
+  transition: transform .25s, background .25s,
+              border-color .25s, color .25s;
 }
 
 .button:hover {
@@ -365,7 +377,7 @@ img {
 
 .button-light {
   border-color: #d7d9ce;
-  background: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.72);
 }
 
 .button-light:hover {
@@ -400,7 +412,7 @@ img {
   font-size: 10px;
 }
 
-/* INTRO STRIP */
+/* AREAS OF EXPERTISE */
 
 .trust-strip {
   background: var(--white);
@@ -435,7 +447,7 @@ img {
   border-radius: 6px;
   color: #505249;
   font-size: 10px;
-  transition: border-color .25s, background .25s;
+  transition: .25s;
 }
 
 .trust-items span:hover {
@@ -443,24 +455,26 @@ img {
   border-color: #d1d5c6;
 }
 
-/* ABOUT */
+/* ABOUT SECTION: STICKY LEFT HEADING */
 
 .about-section {
   position: relative;
   background: var(--white);
-  overflow: hidden;
+  overflow: clip;
 }
 
 .about-layout {
   display: grid;
   grid-template-columns: .95fr 1.05fr;
   gap: 85px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .about-heading {
   position: sticky;
-  top: 125px;
+  top: 115px;
+  align-self: start;
+  padding-bottom: 35px;
 }
 
 .about-heading .section-heading {
@@ -537,7 +551,7 @@ img {
   overflow: hidden;
 }
 
-.skills-section::before {
+.skills-section:before {
   content: "";
   position: absolute;
   width: 440px;
@@ -563,7 +577,7 @@ img {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0,1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -578,7 +592,7 @@ img {
   transition: transform .35s, box-shadow .35s, border-color .35s;
 }
 
-.skill-card::after {
+.skill-card:after {
   content: "";
   position: absolute;
   right: -28px;
@@ -597,7 +611,7 @@ img {
   box-shadow: 0 17px 38px rgba(35,45,25,.07);
 }
 
-.skill-card:hover::after {
+.skill-card:hover:after {
   transform: scale(1.3);
 }
 
@@ -655,7 +669,7 @@ img {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 42px 26px;
 }
 
@@ -677,123 +691,110 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .7s cubic-bezier(.2,.75,.25,1);
+  transition: transform .7s cubic-bezier(.2,.7,.2,1);
 }
 
 .project-card:hover .project-visual img {
-  transform: scale(1.055);
-}
-
-.project-visual::after {
-  content: "";
-  position: absolute;
-  inset: 45% 0 0;
-  z-index: 1;
-  background: linear-gradient(transparent, rgba(15,18,14,.25));
-  opacity: 0;
-  transition: opacity .4s;
-  pointer-events: none;
-}
-
-.project-card:hover .project-visual::after {
-  opacity: 1;
-}
-
-.project-fallback {
-  position: absolute;
-  inset: 0;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(20px, 3vw, 34px);
-  background:
-    radial-gradient(ellipse at 80% 20%, rgba(196,241,123,.52), transparent 45%),
-    linear-gradient(135deg, #f2f3ed, #dfe2d6);
-}
-
-.fallback-kicker {
-  color: #5f6754;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.6px;
-}
-
-.fallback-title {
-  font-family: "Manrope", sans-serif;
-  font-size: clamp(30px, 4vw, 50px);
-  font-weight: 800;
-  letter-spacing: -2px;
-  line-height: 1.05;
-}
-
-.fallback-bottom {
-  color: #6e7264;
-  font-size: 10px;
+  transform: scale(1.045);
 }
 
 .project-number {
   position: absolute;
+  z-index: 2;
   top: 15px;
   left: 15px;
-  z-index: 2;
+  background: rgba(255,255,255,.9);
   padding: 7px 10px;
-  background: rgba(255,255,255,.88);
   border-radius: 6px;
-  color: #30322d;
   font-size: 9px;
-  font-weight: 700;
   letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.project-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  padding: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: white;
+  background: linear-gradient(135deg, #252922, #687451);
+}
+
+.fallback-kicker {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.fallback-title {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(25px, 3vw, 44px);
+  line-height: 1.05;
+  font-weight: 800;
+  margin-top: 17px;
+}
+
+.fallback-bottom {
+  font-size: 10px;
+  margin-top: 22px;
+  color: rgba(255,255,255,.75);
 }
 
 .project-content {
   display: flex;
-  align-items: start;
   justify-content: space-between;
+  align-items: center;
   gap: 18px;
-  padding: 18px 2px 0;
+  padding-top: 18px;
 }
 
 .project-category {
   color: var(--green-dark);
   text-transform: uppercase;
-  font-size: 9px;
   letter-spacing: 1.4px;
+  font-size: 9px;
   font-weight: 700;
 }
 
 .project-content h3 {
   font-family: "Manrope", sans-serif;
-  font-size: clamp(16px, 1.6vw, 20px);
+  font-size: 19px;
   line-height: 1.4;
-  letter-spacing: -.5px;
   margin-top: 6px;
+  font-weight: 800;
 }
 
 .project-content p {
-  max-width: 440px;
-  margin-top: 8px;
+  max-width: 450px;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.85;
+  margin-top: 7px;
 }
 
 .project-open {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
+  flex: 0 0 42px;
   width: 42px;
   height: 42px;
+  display: grid;
+  place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
   font-size: 17px;
-  transition: transform .3s, background .3s, border-color .3s;
+  transition: .3s;
 }
 
 .project-open:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
   transform: rotate(45deg);
-  background: var(--green);
-  border-color: var(--green);
 }
+
+/* EXTRA PROJECTS ARE HIDDEN UNTIL BUTTON CLICK */
 
 .extra-project {
   display: none;
@@ -801,137 +802,111 @@ img {
 
 .extra-project.visible {
   display: block;
-  animation: projectIn .55s ease both;
+  animation: riseIn .55s both;
 }
 
 .view-more-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 53px;
+  margin-top: 48px;
 }
 
 .view-more {
   display: inline-flex;
   align-items: center;
-  gap: 17px;
-  min-height: 49px;
-  padding: 13px 21px;
-  border: 1px solid #d7d9cf;
+  gap: 18px;
+  padding: 14px 22px;
+  border: 1px solid #d9dbd1;
   border-radius: 8px;
-  background: white;
-  cursor: pointer;
+  background: transparent;
   color: var(--ink);
   font-size: 11px;
   font-weight: 700;
-  transition: background .3s, color .3s, border-color .3s, transform .3s;
+  cursor: pointer;
+  transition: .3s;
 }
 
 .view-more:hover {
   background: var(--ink);
   color: white;
   border-color: var(--ink);
-  transform: translateY(-2px);
 }
 
 .view-more span:last-child {
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /* CONTACT */
 
 .contact-section {
-  position: relative;
-  overflow: hidden;
-  background: var(--dark);
+  background: #20221f;
   color: white;
-}
-
-.contact-section::before {
-  content: "";
-  position: absolute;
-  width: 480px;
-  height: 480px;
-  right: -150px;
-  top: -240px;
-  border: 1px solid rgba(196,241,123,.13);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 35px rgba(196,241,123,.025),
-    0 0 0 70px rgba(196,241,123,.025),
-    0 0 0 105px rgba(196,241,123,.025);
-  animation: orbit 35s linear infinite;
-  pointer-events: none;
-}
-
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  align-items: end;
-  gap: 70px;
-  padding-bottom: 76px;
+  padding-bottom: 28px;
 }
 
 .contact-section .section-kicker {
   color: var(--green);
 }
 
-.contact-section .section-kicker::before {
-  background: var(--green);
+.contact-section .section-heading span {
+  color: #aeb3a3;
 }
 
-.contact-section .section-heading span {
-  color: #a8ac9e;
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 70px;
+  align-items: end;
 }
 
 .contact-message {
-  max-width: 460px;
-  margin-top: 23px;
-  color: #b8bcb1;
+  max-width: 450px;
+  color: #b8bbb2;
   font-size: 13px;
-  line-height: 1.9;
+  line-height: 1.95;
+  margin-top: 23px;
 }
 
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: flex-start;
+  padding-bottom: 5px;
 }
 
 .contact-detail-label {
-  color: #9da296;
+  color: #aeb3a3;
   text-transform: uppercase;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.5px;
   font-size: 9px;
+  margin-bottom: 8px;
 }
 
 .contact-detail-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  width: fit-content;
-  max-width: 100%;
-  color: white;
-  font-size: clamp(13px, 1.6vw, 17px);
+  gap: 13px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(15px, 2vw, 22px);
+  font-weight: 700;
+  transition: color .25s;
   overflow-wrap: anywhere;
-  padding-bottom: 6px;
-  border-bottom: 1px solid rgba(255,255,255,.22);
-  transition: color .25s, border-color .25s;
 }
 
 .contact-detail-link:hover {
   color: var(--green);
-  border-color: var(--green);
 }
 
 .contact-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 100px;
+  padding-top: 23px;
   border-top: 1px solid rgba(255,255,255,.13);
-  padding-top: 25px;
-  color: #a5a99e;
+  color: #aeb3a3;
   font-size: 10px;
 }
 
@@ -944,12 +919,12 @@ img {
   color: var(--green);
 }
 
-/* ANIMATIONS */
+/* SCROLL REVEAL */
 
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1);
+  transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s ease;
 }
 
 .reveal.in-view {
@@ -957,250 +932,152 @@ img {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: .08s; }
-.reveal-delay-2 { transition-delay: .16s; }
-.reveal-delay-3 { transition-delay: .24s; }
-.reveal-delay-4 { transition-delay: .32s; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ANIMATIONS */
 
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(22px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes heroImageIn {
-  from { opacity: .45; transform: scale(1.035); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: .4; }
+  to { opacity: 1; }
+}
+
+@keyframes slowPan {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.09) translate3d(-1.5%, 1%, 0); }
 }
 
 @keyframes orbit {
+  from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-@keyframes projectIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes glowDrift {
+  from { transform: translate(-25px, -12px) scale(.92); }
+  to { transform: translate(25px, 20px) scale(1.12); }
 }
 
-/* TABLET */
+/* RESPONSIVE */
 
-@media (max-width: 980px) {
-  .section { padding: 88px 0; }
-
-  .nav-links { gap: 16px; }
-
+@media (max-width: 1000px) {
+  .nav-links { gap: 17px; }
   .about-layout { gap: 45px; }
-
-  .skills-grid {
-    grid-template-columns: repeat(3, minmax(0,1fr));
-  }
-
+  .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .contact-layout { gap: 40px; }
 }
 
-/* MOBILE NAVIGATION AND LAYOUT */
+@media (max-width: 760px) {
+  .container { width: min(100% - 36px, var(--max)); }
+  .section { padding: 75px 0; }
 
-@media (max-width: 720px) {
-  .container { width: min(100% - 40px, var(--max)); }
-
-  .nav { min-height: 69px; }
-
-  .menu-toggle { display: block; }
-
-  .nav-cta { margin-left: auto; }
+  .nav { min-height: 70px; }
+  .nav-cta { display: none; }
+  .menu-toggle { display: block; margin-left: auto; }
 
   .nav-links {
     display: none;
     position: absolute;
+    top: 70px;
     left: 0;
     right: 0;
-    top: 69px;
-    padding: 20px;
-    background: rgba(255,255,255,.98);
+    padding: 18px;
+    background: white;
     border-bottom: 1px solid var(--line);
-    box-shadow: 0 15px 30px rgba(0,0,0,.05);
     flex-direction: column;
     align-items: stretch;
-    gap: 6px;
+    gap: 4px;
   }
 
   .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 18px; }
+  .nav-links a:after { display: none; }
 
-  .nav-links a {
-    padding: 12px 4px;
-    border-bottom: 1px solid #f0f0eb;
-  }
-
-  .nav-links a::after { display: none; }
-
-  .hero { min-height: 600px; }
-
-  .hero::before {
+  .hero { min-height: 590px; }
+  .hero:before {
     background:
       linear-gradient(
         90deg,
-        rgba(248,248,244,.97),
-        rgba(248,248,244,.85)
+        rgba(248,248,244,.95),
+        rgba(248,248,244,.77)
       ),
-      url("assets/banner.jpg") center / cover no-repeat;
+      url("assets/banner.jpg") center/cover no-repeat;
   }
 
-  .hero-content { padding: 80px 0; }
-
-  .hero h1 {
-    font-size: clamp(43px, 10vw, 62px);
-    letter-spacing: -2.8px;
-  }
-
-  .hero-description { font-size: 13px; }
-
-  .hero-bottom { gap: 19px; }
-
+  .hero-content { padding: 85px 0 75px; }
+  .hero h1 { letter-spacing: -2.7px; }
+  .hero-bottom { gap: 22px; }
   .trust-inner {
-    padding: 23px 0;
-    align-items: start;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: flex-start;
     flex-direction: column;
   }
 
   .trust-items { justify-content: flex-start; }
-
-  .section { padding: 78px 0; }
-
-  .about-layout {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .about-heading { position: static; }
-
+  .about-layout { grid-template-columns: 1fr; gap: 30px; }
+  .about-heading { position: static; padding-bottom: 0; }
   .about-content { padding-top: 0; }
 
   .skills-heading,
   .projects-header {
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
-    gap: 17px;
+    gap: 20px;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 11px;
-  }
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-grid { gap: 34px 18px; }
+  .project-content { align-items: flex-start; }
+  .project-content h3 { font-size: 16px; }
+  .project-open { flex-basis: 36px; width: 36px; height: 36px; }
 
-  .skill-card {
-    min-height: 170px;
-    padding: 18px 15px;
-  }
-
-  .skill-icon { margin-bottom: 17px; }
-
-  .project-grid {
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 32px 14px;
-  }
-
-  .project-visual { border-radius: 10px; }
-
-  .project-content { gap: 8px; padding-top: 13px; }
-
-  .project-content h3 { font-size: 14px; }
-
-  .project-content p { font-size: 11px; }
-
-  .project-open {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-
-  .project-number {
-    top: 9px;
-    left: 9px;
-    padding: 5px 7px;
-  }
-
-  .contact-layout {
-    grid-template-columns: 1fr;
-    gap: 38px;
-    padding-bottom: 48px;
-  }
-
-  .contact-section .section-heading {
-    font-size: clamp(36px, 8vw, 48px);
-  }
+  .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .contact-bottom { margin-top: 65px; }
 }
 
-/* SMALL PHONES */
-
-@media (max-width: 440px) {
-  .container { width: calc(100% - 34px); }
-
-  .brand { font-size: 13px; }
-
-  .brand-symbol {
-    width: 34px;
-    height: 34px;
-  }
-
-  .nav-cta {
-    padding: 10px;
-    font-size: 10px;
-  }
-
-  .hero { min-height: 570px; }
-
-  .hero h1 { font-size: 43px; }
-
-  .hero-bottom { gap: 17px; }
-
+@media (max-width: 480px) {
+  .container { width: min(100% - 30px, var(--max)); }
+  .hero { min-height: auto; }
+  .hero-content { padding: 78px 0 65px; }
+  .hero h1 { font-size: 43px; letter-spacing: -2.4px; }
+  .hero-description { font-size: 13px; }
+  .hero-bottom { gap: 18px; }
   .hero-stat strong { font-size: 13px; }
-
-  .about-highlights { gap: 9px; }
-
+  .about-highlights { gap: 10px; }
   .highlight-card { padding: 15px; }
-
-  .highlight-number { font-size: 21px; }
-
-  .skills-grid { gap: 9px; }
-
-  .skill-card { padding: 14px; }
-
-  .skill-card h3 { font-size: 11px; }
-
+  .skills-grid { gap: 10px; }
+  .skill-card { min-height: 175px; padding: 17px 14px; }
   .project-grid { grid-template-columns: 1fr; }
-
   .project-visual { aspect-ratio: 1.55 / 1; }
-
   .project-content h3 { font-size: 17px; }
-
   .project-content p { font-size: 12px; }
-
-  .project-open {
-    width: 38px;
-    height: 38px;
-  }
+  .project-open { width: 38px; height: 38px; }
 }
-
-/* REDUCED MOTION ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-
-  *,
-  *::before,
-  *::after {
+  *, *:before, *:after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
+  .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
-
 <body>
 
 <header class="header">
@@ -1227,10 +1104,14 @@ img {
 
 <main>
 
-<!-- HERO -->
+<!-- HERO SECTION -->
+
 <section class="hero" id="home">
+  <div class="hero-glow" aria-hidden="true"></div>
+
   <div class="container">
     <div class="hero-content">
+
       <div class="hero-badge">
         <span class="status-dot"></span>
         WordPress Developer
@@ -1251,6 +1132,7 @@ img {
         <a href="#projects" class="button button-primary">
           Explore My Work <span>↗</span>
         </a>
+
         <a href="#contact" class="button button-light">
           Get in Touch <span>→</span>
         </a>
@@ -1261,46 +1143,55 @@ img {
           <strong>1–2 Years</strong>
           <span>Practical experience</span>
         </div>
+
         <div class="hero-stat">
           <strong>WordPress</strong>
           <span>Core specialisation</span>
         </div>
+
         <div class="hero-stat">
           <strong>Responsive</strong>
           <span>Across screen sizes</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- SPECIALISATION STRIP -->
+<!-- AREAS OF EXPERTISE -->
+
 <section class="trust-strip" aria-label="Areas of expertise">
   <div class="trust-inner container">
     <p class="trust-label">Areas I work in</p>
+
     <div class="trust-items">
       <span>WordPress</span>
       <span>Elementor</span>
       <span>Responsive Design</span>
       <span>Website Maintenance</span>
-      <span>HTML & CSS</span>
+      <span>HTML &amp; CSS</span>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT SECTION -->
+
 <section class="about-section section" id="about">
   <div class="about-layout container">
 
     <div class="about-heading reveal">
       <p class="section-kicker">A little about me</p>
+
       <h2 class="section-heading">
         Good design is more than how it <span>looks.</span>
       </h2>
+
       <div class="about-mark"></div>
     </div>
 
     <div class="about-content reveal reveal-delay-1">
+
       <p class="lead">
         I’m a WordPress Developer focused on creating clean, accessible
         and responsive websites that make a strong first impression.
@@ -1325,31 +1216,36 @@ img {
           <div class="highlight-number">01</div>
           <p>Thoughtful layouts with a clear visual hierarchy.</p>
         </article>
+
         <article class="highlight-card">
           <div class="highlight-number">02</div>
           <p>Responsive experiences for mobile, tablet and desktop.</p>
         </article>
+
         <article class="highlight-card">
           <div class="highlight-number">03</div>
           <p>Practical website updates, fixes and maintenance.</p>
         </article>
+
         <article class="highlight-card">
           <div class="highlight-number">04</div>
           <p>Collaboration, consistency and attention to detail.</p>
         </article>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- SKILLS SECTION -->
+
 <section class="skills-section section" id="skills">
   <div class="container">
 
     <div class="skills-heading">
       <div class="reveal">
         <p class="section-kicker">My toolkit</p>
+
         <h2 class="section-heading">
           Skills that bring<br><span>websites to life.</span>
         </h2>
@@ -1377,7 +1273,7 @@ img {
 
       <article class="skill-card reveal reveal-delay-2">
         <div class="skill-icon">&lt;/&gt;</div>
-        <h3>HTML & CSS</h3>
+        <h3>HTML &amp; CSS</h3>
         <p>Custom styling, responsive sections and layout adjustments.</p>
       </article>
 
@@ -1395,7 +1291,7 @@ img {
 
       <article class="skill-card reveal">
         <div class="skill-icon">⇄</div>
-        <h3>Migration & Hosting</h3>
+        <h3>Migration &amp; Hosting</h3>
         <p>Website transfers, DNS and hosting panel basics.</p>
       </article>
 
@@ -1427,17 +1323,22 @@ img {
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS SECTION -->
+
 <section class="projects-section section" id="projects">
   <div class="container">
 
     <div class="projects-header">
       <div class="reveal">
         <p class="section-kicker">Selected work</p>
+
         <h2 class="section-heading">
           Ideas made <span>digital.</span>
         </h2>
-        <p class="project-count" id="projectCount">Showing 3 featured projects</p>
+
+        <p class="project-count" id="projectCount">
+          Showing 4 featured projects
+        </p>
       </div>
 
       <p class="section-intro reveal reveal-delay-1">
@@ -1448,14 +1349,21 @@ img {
 
     <div class="project-grid" id="projectGrid">
 
-      <!-- PROJECT 01 -->
+      <!-- PROJECT 01: CITY GATE -->
+
       <article class="project-card reveal">
-        <a href="https://citygategroup.com/" target="_blank" rel="noopener noreferrer"
+        <a href="https://citygategroup.com/" target="_blank"
+           rel="noopener noreferrer"
            aria-label="View City Gate Group website">
+
           <div class="project-visual">
             <span class="project-number">PROJECT 01</span>
-            <img src="assets/citygate.jpg" alt="City Gate Group website preview"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+            <img
+              src="assets/city%20gate%20banner.jpg.png"
+              alt="City Gate Group website preview"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
             <div class="project-fallback">
               <span class="fallback-kicker">Corporate Website</span>
               <span class="fallback-title">City Gate<br>Group</span>
@@ -1463,212 +1371,346 @@ img {
             </div>
           </div>
         </a>
+
         <div class="project-content">
           <div>
             <span class="project-category">Corporate Website</span>
             <h3>City Gate Group</h3>
-            <p>Corporate website development, service pages and a professional industrial brand presentation.</p>
+            <p>
+              Corporate website development, service pages and a
+              professional industrial brand presentation.
+            </p>
           </div>
-          <a class="project-open" href="https://citygategroup.com/" target="_blank"
-             rel="noopener noreferrer" aria-label="Open City Gate Group">↗</a>
+
+          <a class="project-open"
+             href="https://citygategroup.com/"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Open City Gate Group">↗</a>
         </div>
       </article>
 
-      <!-- PROJECT 02 -->
+      <!-- PROJECT 02: GAMATECH -->
+
       <article class="project-card reveal reveal-delay-1">
-        <a href="https://gamatechenergy.com/home/" target="_blank" rel="noopener noreferrer"
+        <a href="https://gamatechenergy.com/home/" target="_blank"
+           rel="noopener noreferrer"
            aria-label="View GAMATECH Energy website">
+
           <div class="project-visual">
             <span class="project-number">PROJECT 02</span>
-            <img src="assets/gamatech.jpg" alt="GAMATECH Energy website preview"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+            <img
+              src="assets/gamatech.jpg"
+              alt="GAMATECH Energy website preview"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
             <div class="project-fallback">
-              <span class="fallback-kicker">Energy & Engineering</span>
+              <span class="fallback-kicker">Energy &amp; Engineering</span>
               <span class="fallback-title">GAMA<br>TECH</span>
               <span class="fallback-bottom">WordPress · Elementor</span>
             </div>
           </div>
         </a>
+
         <div class="project-content">
           <div>
-            <span class="project-category">Energy & Engineering</span>
+            <span class="project-category">Energy &amp; Engineering</span>
             <h3>GAMATECH Energy</h3>
-            <p>Website redesign with a bold industrial look, structured content and responsive layouts.</p>
+            <p>
+              Website redesign with a bold industrial look, structured
+              content and responsive layouts.
+            </p>
           </div>
-          <a class="project-open" href="https://gamatechenergy.com/home/" target="_blank"
-             rel="noopener noreferrer" aria-label="Open GAMATECH Energy">↗</a>
+
+          <a class="project-open"
+             href="https://gamatechenergy.com/home/"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Open GAMATECH Energy">↗</a>
         </div>
       </article>
 
       <!-- PROJECT 03 -->
+
       <article class="project-card reveal">
         <div class="project-visual">
           <span class="project-number">PROJECT 03</span>
-          <img src="assets/other-wordpress.jpg" alt="WordPress website project preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+          <img
+            src="assets/other-wordpress.jpg"
+            alt="WordPress website project preview"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Web Development</span>
             <span class="fallback-title">WordPress<br>Projects</span>
             <span class="fallback-bottom">Responsive · Web Design</span>
           </div>
         </div>
+
         <div class="project-content">
           <div>
             <span class="project-category">Web Development</span>
             <h3>Other WordPress Projects</h3>
-            <p>Additional page designs, responsive layouts and website improvements.</p>
+            <p>
+              Additional page designs, responsive layouts and website
+              improvements.
+            </p>
           </div>
         </div>
       </article>
 
       <!-- PROJECT 04 -->
-      <article class="project-card extra-project">
+
+      <article class="project-card reveal reveal-delay-1">
         <div class="project-visual">
           <span class="project-number">PROJECT 04</span>
-          <img src="assets/project-04.jpg" alt="Website project 4"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+          <img
+            src="assets/project-04.jpg"
+            alt="Website project 4 preview"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Four</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-kicker">Web Design</span>
+            <span class="fallback-title">Creative<br>Web Design</span>
+            <span class="fallback-bottom">Responsive · Layouts</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 04</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Design Project</h3>
+            <p>
+              Responsive page layout and visual presentation for a web project.
+            </p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 05 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 05</span>
-          <img src="assets/project-05.jpg" alt="Website project 5"
+          <img src="assets/project-05.jpg"
+               alt="Website project 5 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Five</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 05</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 05</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 06 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 06</span>
-          <img src="assets/project-06.jpg" alt="Website project 6"
+          <img src="assets/project-06.jpg"
+               alt="Website project 6 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Six</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 06</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 06</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 07 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 07</span>
-          <img src="assets/project-07.jpg" alt="Website project 7"
+          <img src="assets/project-07.jpg"
+               alt="Website project 7 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Seven</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 07</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 07</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 08 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 08</span>
-          <img src="assets/project-08.jpg" alt="Website project 8"
+          <img src="assets/project-08.jpg"
+               alt="Website project 8 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Eight</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 08</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 08</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 09 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 09</span>
-          <img src="assets/project-09.jpg" alt="Website project 9"
+          <img src="assets/project-09.jpg"
+               alt="Website project 9 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Nine</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 09</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 09</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 10 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 10</span>
-          <img src="assets/project-10.jpg" alt="Website project 10"
+          <img src="assets/project-10.jpg"
+               alt="Website project 10 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Ten</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 10</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 10</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 11 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 11</span>
-          <img src="assets/project-11.jpg" alt="Website project 11"
+          <img src="assets/project-11.jpg"
+               alt="Website project 11 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Eleven</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 11</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 11</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 12 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 12</span>
-          <img src="assets/project-12.jpg" alt="Website project 12"
+          <img src="assets/project-12.jpg"
+               alt="Website project 12 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Twelve</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 12</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 12</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
       <!-- PROJECT 13 -->
+
       <article class="project-card extra-project">
         <div class="project-visual">
           <span class="project-number">PROJECT 13</span>
-          <img src="assets/project-13.jpg" alt="Website project 13"
+          <img src="assets/project-13.jpg"
+               alt="Website project 13 preview"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
           <div class="project-fallback">
             <span class="fallback-kicker">Website Project</span>
             <span class="fallback-title">Project<br>Thirteen</span>
-            <span class="fallback-bottom">Replace with screenshot</span>
+            <span class="fallback-bottom">Add your screenshot</span>
           </div>
         </div>
-        <div class="project-content"><div><span class="project-category">Web Design</span><h3>Website Project 13</h3><p>Replace with the real project name and description.</p></div></div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-category">Web Design</span>
+            <h3>Website Project 13</h3>
+            <p>Replace with the real project name and description.</p>
+          </div>
+        </div>
       </article>
 
     </div>
@@ -1683,16 +1725,19 @@ img {
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT SECTION -->
+
 <section class="contact-section section" id="contact">
   <div class="container">
-    <div class="contact-layout">
 
+    <div class="contact-layout">
       <div class="reveal">
         <p class="section-kicker">Get in touch</p>
+
         <h2 class="section-heading">
           Let's build<br>something <span>meaningful.</span>
         </h2>
+
         <p class="contact-message">
           Have a website project, a collaboration idea or a professional
           opportunity? I'd be happy to hear from you.
@@ -1701,41 +1746,55 @@ img {
 
       <div class="contact-details reveal reveal-delay-1">
         <span class="contact-detail-label">Email me</span>
-        <a class="contact-detail-link" href="mailto:munnimujeeb046@gmail.com">
+
+        <a class="contact-detail-link"
+           href="mailto:munnimujeeb046@gmail.com">
           munnimujeeb046@gmail.com <span>↗</span>
         </a>
 
-        <span class="contact-detail-label" style="margin-top:18px">Call me</span>
+        <span class="contact-detail-label" style="margin-top:18px">
+          Call me
+        </span>
+
         <a class="contact-detail-link" href="tel:+919446248976">
           +91 94462 48976 <span>↗</span>
         </a>
       </div>
-
     </div>
 
     <footer class="contact-bottom">
-      <span>© <span id="year"></span> Munni N K. All rights reserved.</span>
+      <span>
+        © <span id="year"></span> Munni N K. All rights reserved.
+      </span>
+
       <span>Designed with care.</span>
+
       <a class="back-top" href="#home">Back to top ↑</a>
     </footer>
+
   </div>
 </section>
 
 </main>
 
+<!-- JAVASCRIPT -->
+
 <script>
 /* MOBILE NAVIGATION */
+
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
 menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  const open = navLinks.classList.toggle("open");
+
+  menuToggle.setAttribute("aria-expanded", String(open));
   menuToggle.setAttribute(
     "aria-label",
-    isOpen ? "Close navigation" : "Open navigation"
+    open ? "Close navigation" : "Open navigation"
   );
-  menuToggle.textContent = isOpen ? "×" : "☰";
+
+  menuToggle.textContent = open ? "×" : "☰";
 });
 
 navLinks.querySelectorAll("a").forEach(link => {
@@ -1747,7 +1806,8 @@ navLinks.querySelectorAll("a").forEach(link => {
   });
 });
 
-/* VIEW MORE PROJECTS */
+/* VIEW MORE PROJECTS BUTTON */
+
 const viewMoreBtn = document.getElementById("viewMoreBtn");
 const viewMoreText = document.getElementById("viewMoreText");
 const viewMoreArrow = document.getElementById("viewMoreArrow");
@@ -1755,59 +1815,72 @@ const projectCount = document.getElementById("projectCount");
 const extraProjects = document.querySelectorAll(".extra-project");
 
 viewMoreBtn.addEventListener("click", () => {
-  const expanded = viewMoreBtn.getAttribute("aria-expanded") === "true";
-  const showMore = !expanded;
+  const showMore =
+    viewMoreBtn.getAttribute("aria-expanded") !== "true";
 
   extraProjects.forEach((project, index) => {
     project.classList.toggle("visible", showMore);
 
     if (showMore) {
       project.style.animationDelay = `${(index % 4) * 70}ms`;
-      project.querySelectorAll(".reveal").forEach(el => el.classList.add("in-view"));
     }
   });
 
   viewMoreBtn.setAttribute("aria-expanded", String(showMore));
+
   viewMoreText.textContent = showMore
     ? "Show Fewer Projects"
     : "View More Projects";
+
   viewMoreArrow.textContent = showMore ? "↑" : "↓";
+
   projectCount.textContent = showMore
     ? "Showing all 13 projects"
-    : "Showing 3 featured projects";
+    : "Showing 4 featured projects";
 
   if (!showMore) {
     document.getElementById("projects").scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
+      behavior: window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches ? "auto" : "smooth",
       block: "start"
     });
   }
 });
 
-/* COPYRIGHT YEAR */
-document.getElementById("year").textContent = new Date().getFullYear();
+/* CURRENT YEAR */
 
-/* SCROLL REVEAL */
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+/* SCROLL REVEAL ANIMATION */
+
 const revealElements = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: "0px 0px -35px 0px"
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -35px 0px"
+    }
+  );
+
+  revealElements.forEach(element => {
+    observer.observe(element);
   });
 
-  revealElements.forEach(element => revealObserver.observe(element));
 } else {
-  revealElements.forEach(element => element.classList.add("in-view"));
+  revealElements.forEach(element => {
+    element.classList.add("in-view");
+  });
 }
 </script>
 
