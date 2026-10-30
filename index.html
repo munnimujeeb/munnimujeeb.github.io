@@ -8,6 +8,8 @@
 
 <title>Munni NK | WordPress Developer</title>
 
+<meta name="description" content="Munni NK — WordPress Developer creating modern, responsive and engaging websites with WordPress and Elementor.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -15,9 +17,19 @@
 
 <style>
 
-/* ==========================================
+/* =====================================
    GLOBAL
-========================================== */
+===================================== */
+
+:root {
+    --bg: #101113;
+    --bg-soft: #17181b;
+    --gold: #c9ad83;
+    --gold-light: #ead6b8;
+    --white: #f5f2ed;
+    --muted: #a5a19a;
+    --line: rgba(255,255,255,0.10);
+}
 
 * {
     margin: 0;
@@ -30,9 +42,10 @@ html {
 }
 
 body {
-    background: #101113;
-    color: #F4F0E9;
+    background: var(--bg);
+    color: var(--white);
     font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
 }
 
 a {
@@ -40,846 +53,1302 @@ a {
     color: inherit;
 }
 
-:root {
-    --bg: #101113;
-    --gold: #C9AD83;
-    --gold-light: #E5CEAC;
-    --ivory: #F4F0E9;
-    --muted: #A5A19A;
-    --border: rgba(226,204,170,0.15);
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* ==========================================
-   HERO
-========================================== */
+/* =====================================
+   BACKGROUND ATMOSPHERE
+===================================== */
 
-.mn-hero {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100svh;
-
-    display: flex;
-    flex-direction: column;
-
-    overflow: hidden;
-    isolation: isolate;
-
-    background: var(--bg);
-}
-
-/* ==========================================
-   ANIMATED BACKGROUND
-========================================== */
-
-.mn-bg {
-    position: absolute;
+.site-background {
+    position: fixed;
     inset: 0;
     z-index: -5;
     overflow: hidden;
     pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 76% 40%,
+            rgba(201,173,131,0.09),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 10% 85%,
+            rgba(201,173,131,0.045),
+            transparent 32%
+        ),
+        #101113;
 }
 
-/* Large moving ambient light */
-
-.mn-bg::before {
-    content: "";
-
+.background-glow {
     position: absolute;
-
-    width: 900px;
-    height: 900px;
-
-    top: -550px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
+    width: 550px;
+    height: 550px;
     border-radius: 50%;
-
-    background: radial-gradient(
-        circle,
-        rgba(201,173,131,0.17) 0%,
-        rgba(201,173,131,0.07) 35%,
-        transparent 70%
-    );
-
-    filter: blur(75px);
-
-    animation: ambientTop 12s ease-in-out infinite alternate;
+    filter: blur(110px);
+    opacity: 0.16;
+    background: #a9895f;
+    animation: glowMove 13s ease-in-out infinite alternate;
 }
 
-.mn-bg::after {
-    content: "";
-
-    position: absolute;
-
-    width: 800px;
-    height: 800px;
-
-    bottom: -600px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border-radius: 50%;
-
-    background: radial-gradient(
-        circle,
-        rgba(158,126,86,0.16),
-        transparent 70%
-    );
-
-    filter: blur(75px);
-
-    animation: ambientBottom 15s ease-in-out infinite alternate;
+.glow-one {
+    top: -250px;
+    right: -100px;
 }
 
-@keyframes ambientTop {
+.glow-two {
+    bottom: -350px;
+    left: 25%;
+    width: 650px;
+    height: 650px;
+    opacity: 0.08;
+    animation-delay: -5s;
+}
+
+@keyframes glowMove {
     0% {
-        transform: translate(-60%, 0) scale(1);
+        transform: translate3d(0,0,0) scale(0.9);
     }
-
-    50% {
-        transform: translate(-35%, 180px) scale(1.2);
-    }
-
     100% {
-        transform: translate(-50%, 300px) scale(.9);
+        transform: translate3d(-100px,100px,0) scale(1.2);
     }
 }
 
-@keyframes ambientBottom {
-    0% {
-        transform: translate(-55%, 0);
-    }
-
-    100% {
-        transform: translate(-35%, -180px);
-    }
-}
-
-/* ==========================================
-   MOVING GRID
-========================================== */
-
-.mn-grid {
+.background-grid {
     position: absolute;
     inset: 0;
-    z-index: -4;
-
+    opacity: 0.12;
     background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
     background-size: 75px 75px;
-
-    mask-image: radial-gradient(
-        ellipse at center,
-        black 0%,
-        rgba(0,0,0,.8) 45%,
-        transparent 85%
-    );
-
-    animation: gridMovement 35s linear infinite;
+    mask-image: linear-gradient(to bottom, black, transparent 95%);
 }
 
-@keyframes gridMovement {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: 150px 150px;
-    }
-}
-
-/* ==========================================
-   FLOATING LIGHT PARTICLES
-========================================== */
-
-.mn-particles {
-    position: absolute;
-    inset: 0;
-    z-index: -3;
-    pointer-events: none;
-
-    background-image:
-        radial-gradient(circle, rgba(226,204,170,.8) 1px, transparent 1.8px),
-        radial-gradient(circle, rgba(226,204,170,.55) 1px, transparent 2px),
-        radial-gradient(circle, rgba(226,204,170,.4) 1px, transparent 2px);
-
-    background-size:
-        160px 160px,
-        230px 230px,
-        310px 310px;
-
-    background-position:
-        20px 30px,
-        100px 120px,
-        200px 80px;
-
-    opacity: .24;
-
-    animation: particleFloat 30s linear infinite;
-}
-
-@keyframes particleFloat {
-    from {
-        background-position:
-            20px 30px,
-            100px 120px,
-            200px 80px;
-    }
-
-    to {
-        background-position:
-            20px -330px,
-            100px -340px,
-            200px -400px;
-    }
-}
-
-/* ==========================================
-   LIGHT SWEEP
-========================================== */
-
-.mn-light-sweep {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.mn-light-sweep::before {
-    content: "";
-
-    position: absolute;
-
-    width: 35%;
-    height: 1px;
-
-    left: -40%;
-    top: 35%;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(226,204,170,.45),
-        transparent
-    );
-
-    box-shadow: 0 0 25px rgba(201,173,131,.25);
-
-    animation: horizontalSweep 10s ease-in-out infinite;
-}
-
-.mn-light-sweep::after {
-    content: "";
-
-    position: absolute;
-
-    width: 1px;
-    height: 40%;
-
-    top: 100%;
-    right: 25%;
-
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(226,204,170,.3),
-        transparent
-    );
-
-    animation: verticalSweep 13s linear infinite;
-}
-
-@keyframes horizontalSweep {
-    0% {
-        left: -40%;
-        opacity: 0;
-    }
-
-    20% {
-        opacity: .7;
-    }
-
-    80% {
-        opacity: .5;
-    }
-
-    100% {
-        left: 110%;
-        opacity: 0;
-    }
-}
-
-@keyframes verticalSweep {
-    0% {
-        top: 100%;
-        opacity: 0;
-    }
-
-    30% {
-        opacity: .5;
-    }
-
-    100% {
-        top: -50%;
-        opacity: 0;
-    }
-}
-
-/* ==========================================
+/* =====================================
    HEADER
-========================================== */
+===================================== */
 
-.mn-header {
-    position: relative;
-    z-index: 10;
-
+.header {
     width: 100%;
-    padding: 0 7%;
-
-    border-bottom: 1px solid var(--border);
-
-    background: rgba(16,17,19,.5);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-}
-
-.mn-header-inner {
-    max-width: 1400px;
-    min-height: 86px;
-
-    margin: auto;
-
+    height: 90px;
+    padding: 0 8%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 20;
+    border-bottom: 1px solid rgba(255,255,255,0.055);
 }
 
-/* Logo */
-
-.mn-logo {
+.logo {
     font-family: 'Manrope', sans-serif;
-
     font-size: 19px;
     font-weight: 800;
-
-    letter-spacing: 1px;
-    color: var(--ivory);
+    letter-spacing: 3px;
+    color: var(--white);
 }
 
-.mn-logo span {
+.logo span {
     color: var(--gold);
 }
 
-/* Navigation */
-
-.mn-nav {
+.nav-menu {
     display: flex;
     align-items: center;
-    gap: 37px;
+    gap: 39px;
 }
 
-.mn-nav a {
-    position: relative;
-
-    color: #B8B2A8;
-
-    font-size: 10px;
-    font-weight: 500;
-
-    letter-spacing: 1.5px;
+.nav-menu a {
+    color: #aaa7a0;
+    font-size: 12px;
+    letter-spacing: 1.1px;
     text-transform: uppercase;
-
-    transition: color .3s ease;
+    transition: color 0.3s ease;
+    position: relative;
 }
 
-.mn-nav a:hover {
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
     color: var(--gold-light);
 }
 
-.mn-nav a:not(.mn-contact)::after {
-    content: "";
-
-    position: absolute;
-    left: 0;
-    bottom: -9px;
-
-    width: 0;
-    height: 1px;
-
-    background: var(--gold);
-
-    transition: width .3s ease;
-}
-
-.mn-nav a:hover::after {
+.nav-menu a:hover::after {
     width: 100%;
 }
 
-.mn-nav .mn-contact {
-    padding: 12px 19px;
-
+.header-contact {
+    border: 1px solid rgba(201,173,131,0.55);
     color: var(--gold-light);
-    border: 1px solid rgba(201,173,131,.45);
-
-    transition: .3s ease;
+    padding: 11px 19px;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
 }
 
-.mn-nav .mn-contact:hover {
+.header-contact:hover {
     background: var(--gold);
     color: #101113;
 }
 
-/* ==========================================
-   CENTERED HERO CONTENT
-========================================== */
+/* =====================================
+   HERO LAYOUT
+===================================== */
 
-.mn-main {
+.hero {
+    min-height: calc(100vh - 90px);
+    padding: 65px 8% 55px;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+    gap: 45px;
     position: relative;
-    z-index: 2;
-
-    width: 100%;
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding: 60px 6% 75px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+    isolation: isolate;
 }
 
-/* Small label */
-
-.mn-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 13px;
-
-    margin-bottom: 33px;
-
-    color: var(--gold);
-
-    font-size: 10px;
-    font-weight: 600;
-
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
-
-.mn-label::before,
-.mn-label::after {
-    content: "";
-
-    width: 26px;
-    height: 1px;
-
-    background: var(--gold);
-    opacity: .8;
-}
-
-/* Main heading */
-
-.mn-heading {
-    max-width: 1000px;
-
-    font-family: 'Manrope', sans-serif;
-
-    font-size: clamp(48px, 5vw, 57px);
-
-    font-weight: 500;
-    line-height: 1.12;
-
-    letter-spacing: -4px;
-
-    color: var(--ivory);
-}
-
-.mn-heading span {
-    color: var(--gold);
-    font-weight: 500;
-}
-
-/* Description */
-
-.mn-description {
-    max-width: 530px;
-
-    margin: 29px auto 0;
-
-    color: var(--muted);
-
-    font-size: 15px;
-    font-weight: 400;
-
-    line-height: 2;
-    letter-spacing: .4px;
-}
-
-/* ==========================================
-   BUTTONS
-========================================== */
-
-.mn-actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 15px;
-
-    margin-top: 40px;
-}
-
-.mn-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 17px;
-
-    padding: 15px 24px;
-
-    font-size: 10px;
-    font-weight: 600;
-
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
-
-    transition: all .35s ease;
-}
-
-.mn-primary {
-    background: var(--gold);
-    border: 1px solid var(--gold);
-    color: #171513;
-}
-
-.mn-primary:hover {
-    background: var(--gold-light);
-    border-color: var(--gold-light);
-
-    transform: translateY(-4px);
-
-    box-shadow: 0 10px 35px rgba(201,173,131,.15);
-}
-
-.mn-secondary {
-    color: var(--ivory);
-    border: 1px solid rgba(255,255,255,.2);
-}
-
-.mn-secondary:hover {
-    color: var(--gold-light);
-    border-color: var(--gold);
-    transform: translateY(-4px);
-}
-
-.mn-btn span {
-    font-size: 15px;
-}
-
-/* ==========================================
-   SMALL SCROLL INDICATOR
-========================================== */
-
-.mn-scroll {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 11px;
-
-    margin-top: 75px;
-
-    color: #827C72;
-
-    font-size: 8px;
-    font-weight: 500;
-
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.mn-scroll-line {
+.hero-content {
+    max-width: 590px;
     position: relative;
-
-    width: 1px;
-    height: 42px;
-
-    overflow: hidden;
-
-    background: rgba(201,173,131,.2);
+    z-index: 5;
+    animation: contentEnter 1s ease both;
 }
 
-.mn-scroll-line::after {
-    content: "";
-
-    position: absolute;
-
-    width: 1px;
-    height: 20px;
-
-    top: -20px;
-    left: 0;
-
-    background: var(--gold);
-
-    animation: scrollLine 2s ease-in-out infinite;
-}
-
-@keyframes scrollLine {
-    0% {
-        top: -20px;
-    }
-
-    100% {
-        top: 45px;
-    }
-}
-
-/* ==========================================
-   BOTTOM DETAILS
-========================================== */
-
-.mn-bottom {
-    position: relative;
-    z-index: 2;
-
-    width: 100%;
-    max-width: 1400px;
-
-    margin: auto auto 0;
-    padding: 24px 9%;
-
-    border-top: 1px solid var(--border);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 25px;
-}
-
-.mn-info {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.mn-info-label {
-    color: #858078;
-
-    font-size: 9px;
-    font-weight: 500;
-
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-}
-
-.mn-info-value {
-    color: #E4DFD5;
-
-    font-size: 11px;
-    font-weight: 500;
-
-    letter-spacing: .4px;
-}
-
-/* ==========================================
-   CONTENT ANIMATION
-========================================== */
-
-.mn-reveal {
-    opacity: 0;
-    animation: revealContent 1s cubic-bezier(.2,.7,.2,1) forwards;
-}
-
-.mn-label.mn-reveal {
-    animation-delay: .15s;
-}
-
-.mn-heading.mn-reveal {
-    animation-delay: .35s;
-}
-
-.mn-description.mn-reveal {
-    animation-delay: .55s;
-}
-
-.mn-actions.mn-reveal {
-    animation-delay: .75s;
-}
-
-.mn-scroll.mn-reveal {
-    animation-delay: .95s;
-}
-
-@keyframes revealContent {
+@keyframes contentEnter {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(30px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* ==========================================
-   TABLET
-========================================== */
+/* =====================================
+   LEFT CONTENT
+===================================== */
 
-@media (max-width: 900px) {
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
 
-    .mn-main {
-        padding: 100px 6%;
+.hero-label span {
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(43px, 5.2vw, 76px);
+    line-height: 1.12;
+    letter-spacing: -3.5px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 22px;
+}
+
+.hero h1 .gold-text {
+    color: var(--gold);
+    display: inline-block;
+}
+
+.hero-description {
+    max-width: 455px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.95;
+    letter-spacing: 0.15px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    padding: 16px 22px;
+    background: var(--gold);
+    color: #151515;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    transition: 0.35s ease;
+}
+
+.primary-btn span {
+    font-size: 17px;
+    transition: transform 0.3s ease;
+}
+
+.primary-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(201,173,131,0.15);
+}
+
+.primary-btn:hover span {
+    transform: translateX(5px);
+}
+
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    border: 1px solid rgba(255,255,255,0.16);
+    color: var(--white);
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.secondary-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    transform: translateY(-4px);
+}
+
+.secondary-btn span {
+    color: var(--gold);
+    font-size: 16px;
+}
+
+/* Availability detail */
+
+.hero-note {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 38px;
+    color: #8e8b84;
+    font-size: 11px;
+    letter-spacing: 1.1px;
+}
+
+.hero-note .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b9a17c;
+    box-shadow: 0 0 12px rgba(201,173,131,0.8);
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    0%,100% {
+        box-shadow: 0 0 0 0 rgba(201,173,131,0.45);
     }
-
-    .mn-heading {
-        font-size: clamp(48px, 8vw, 72px);
-    }
-
-    .mn-nav {
-        gap: 22px;
+    50% {
+        box-shadow: 0 0 0 7px rgba(201,173,131,0);
     }
 }
 
-/* ==========================================
-   MOBILE
-========================================== */
+/* =====================================
+   RIGHT SIDE ANIMATION STAGE
+===================================== */
 
-@media (max-width: 700px) {
+.visual-stage {
+    min-height: 550px;
+    height: 100%;
+    max-height: 660px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    animation: visualEnter 1.2s ease both;
+    animation-delay: 0.2s;
+}
 
-    .mn-header {
+@keyframes visualEnter {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Ambient stage light */
+
+.stage-light {
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    background: rgba(201,173,131,0.10);
+    filter: blur(95px);
+    animation: stageLight 8s ease-in-out infinite alternate;
+}
+
+@keyframes stageLight {
+    from {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+    to {
+        transform: scale(1.25);
+        opacity: 0.85;
+    }
+}
+
+/* Floating main browser */
+
+.browser-scene {
+    width: min(100%, 530px);
+    position: relative;
+    z-index: 3;
+    transform-style: preserve-3d;
+    animation: browserFloat 6s ease-in-out infinite;
+}
+
+@keyframes browserFloat {
+    0%,100% {
+        transform: translateY(0) rotateY(-7deg) rotateX(3deg);
+    }
+    50% {
+        transform: translateY(-15px) rotateY(-3deg) rotateX(1deg);
+    }
+}
+
+.browser-window {
+    width: 100%;
+    min-height: 355px;
+    overflow: hidden;
+    border: 1px solid rgba(234,214,184,0.24);
+    border-radius: 12px;
+    background: #191a1c;
+    box-shadow:
+        0 35px 90px rgba(0,0,0,0.5),
+        0 0 50px rgba(201,173,131,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    transform-style: preserve-3d;
+}
+
+/* Browser top bar */
+
+.browser-top {
+    height: 43px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #222326;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.browser-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.browser-dots i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #77736e;
+}
+
+.browser-dots i:first-child {
+    background: #c9ad83;
+}
+
+.browser-address {
+    width: 45%;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.055);
+    color: #88847e;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.browser-menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.browser-menu-icon i {
+    display: block;
+    width: 14px;
+    height: 1px;
+    background: #aaa49b;
+}
+
+/* Mock website inside browser */
+
+.website-preview {
+    padding: 25px 27px 24px;
+    background:
+        radial-gradient(ellipse at 90% 30%, rgba(201,173,131,0.13), transparent 45%),
+        #151618;
+    min-height: 312px;
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.preview-logo {
+    width: 73px;
+    height: 7px;
+    border-radius: 4px;
+    background: var(--gold);
+}
+
+.preview-links {
+    display: flex;
+    gap: 12px;
+}
+
+.preview-links i {
+    width: 23px;
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.25);
+}
+
+.preview-hero {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    align-items: center;
+    gap: 12px;
+}
+
+.preview-copy {
+    position: relative;
+    z-index: 2;
+}
+
+.preview-eyebrow {
+    width: 62px;
+    height: 5px;
+    background: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 16px;
+}
+
+.preview-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.preview-heading i {
+    display: block;
+    height: 12px;
+    width: 100%;
+    max-width: 155px;
+    border-radius: 2px;
+    background: #e9e4dc;
+    animation: headingGlow 4s ease-in-out infinite;
+}
+
+.preview-heading i:nth-child(2) {
+    width: 75%;
+    background: var(--gold);
+    animation-delay: 0.4s;
+}
+
+.preview-heading i:nth-child(3) {
+    width: 55%;
+    background: #e9e4dc;
+    animation-delay: 0.8s;
+}
+
+@keyframes headingGlow {
+    0%,100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.preview-paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 19px;
+}
+
+.preview-paragraph i {
+    display: block;
+    height: 4px;
+    width: 95%;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.20);
+}
+
+.preview-paragraph i:nth-child(2) {
+    width: 80%;
+}
+
+.preview-paragraph i:nth-child(3) {
+    width: 60%;
+}
+
+.preview-button {
+    width: 75px;
+    height: 20px;
+    border-radius: 2px;
+    background: var(--gold);
+}
+
+/* Abstract website image panel */
+
+.preview-image {
+    height: 175px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(201,173,131,0.2), transparent 60%),
+        linear-gradient(35deg, #3b352d, #17191b 65%);
+}
+
+.preview-image::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 160px;
+    right: -5px;
+    bottom: -40px;
+    transform: rotate(28deg);
+    background: linear-gradient(135deg, #c9ad83, #6c5841);
+    opacity: 0.7;
+    filter: blur(1px);
+}
+
+.preview-image::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 120px;
+    left: 12px;
+    bottom: -25px;
+    transform: rotate(-25deg);
+    border: 1px solid rgba(234,214,184,0.5);
+    background: rgba(255,255,255,0.04);
+}
+
+.image-shine {
+    position: absolute;
+    inset: -100% -50%;
+    background: linear-gradient(
+        110deg,
+        transparent 40%,
+        rgba(255,255,255,0.15) 50%,
+        transparent 60%
+    );
+    animation: imageShine 5s ease-in-out infinite;
+}
+
+@keyframes imageShine {
+    0% {
+        transform: translateX(-45%);
+    }
+    65%,100% {
+        transform: translateX(45%);
+    }
+}
+
+/* Preview bottom cards */
+
+.preview-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+    margin-top: 24px;
+}
+
+.preview-card {
+    height: 37px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.035);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-card::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 9px;
+    width: 30%;
+    height: 4px;
+    background: var(--gold);
+    opacity: 0.75;
+}
+
+.preview-card::after {
+    content: "";
+    position: absolute;
+    top: 19px;
+    left: 9px;
+    width: 65%;
+    height: 4px;
+    background: rgba(255,255,255,0.18);
+}
+
+/* =====================================
+   FLOATING CODE CARD
+===================================== */
+
+.code-card {
+    position: absolute;
+    z-index: 6;
+    left: -35px;
+    bottom: 48px;
+    width: 205px;
+    padding: 16px;
+    border: 1px solid rgba(201,173,131,0.28);
+    border-radius: 8px;
+    background: rgba(25,26,28,0.94);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.4);
+    animation: codeFloat 5s ease-in-out infinite;
+}
+
+@keyframes codeFloat {
+    0%,100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(-1deg);
+    }
+}
+
+.code-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #b9b2a7;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.code-title span {
+    color: var(--gold);
+    font-size: 10px;
+}
+
+.code-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.code-line {
+    height: 5px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.16);
+    position: relative;
+    overflow: hidden;
+}
+
+.code-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 30%;
+    background: var(--gold);
+    opacity: 0.7;
+    animation: codeTyping 3s ease-in-out infinite alternate;
+}
+
+.code-line:nth-child(1) {
+    width: 75%;
+}
+
+.code-line:nth-child(2) {
+    width: 95%;
+}
+
+.code-line:nth-child(3) {
+    width: 60%;
+}
+
+.code-line:nth-child(4) {
+    width: 82%;
+}
+
+.code-line:nth-child(5) {
+    width: 45%;
+}
+
+.code-line:nth-child(2)::after {
+    animation-delay: 0.4s;
+}
+
+.code-line:nth-child(3)::after {
+    animation-delay: 0.8s;
+}
+
+.code-line:nth-child(4)::after {
+    animation-delay: 1.2s;
+}
+
+@keyframes codeTyping {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(250%);
+    }
+}
+
+/* =====================================
+   FLOATING WORDPRESS CARD
+===================================== */
+
+.wordpress-card {
+    position: absolute;
+    z-index: 7;
+    top: 55px;
+    right: -14px;
+    width: 115px;
+    height: 115px;
+    border-radius: 9px;
+    border: 1px solid rgba(201,173,131,0.25);
+    background: rgba(29,30,32,0.92);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    animation: wordpressFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes wordpressFloat {
+    0%,100% {
+        transform: translateY(0) rotate(5deg);
+    }
+    50% {
+        transform: translateY(12px) rotate(1deg);
+    }
+}
+
+.wp-symbol {
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-style: italic;
+}
+
+.wordpress-card small {
+    color: #b9b2a7;
+    font-size: 8px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+/* =====================================
+   FLOATING TOOL TAGS
+===================================== */
+
+.tool-tag {
+    position: absolute;
+    z-index: 7;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    background: rgba(27,28,30,0.92);
+    color: #d4c5ad;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.tag-elementor {
+    right: 0;
+    bottom: 105px;
+    animation: tagFloat 5s ease-in-out infinite;
+}
+
+.tag-responsive {
+    left: 18px;
+    top: 92px;
+    animation: tagFloat 6s ease-in-out infinite reverse;
+}
+
+@keyframes tagFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-11px);
+    }
+}
+
+/* =====================================
+   ANIMATED LIGHT STREAKS
+===================================== */
+
+.light-streak {
+    position: absolute;
+    z-index: 1;
+    width: 1px;
+    height: 190px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(201,173,131,0.6),
+        transparent
+    );
+    opacity: 0;
+    transform: rotate(35deg);
+    animation: streakMove 5s ease-in-out infinite;
+}
+
+.streak-one {
+    top: 8%;
+    left: 24%;
+}
+
+.streak-two {
+    bottom: 2%;
+    right: 20%;
+    animation-delay: 2.5s;
+}
+
+@keyframes streakMove {
+    0% {
+        opacity: 0;
+        transform: translateY(-60px) rotate(35deg);
+    }
+    35% {
+        opacity: 0.6;
+    }
+    75%,100% {
+        opacity: 0;
+        transform: translateY(170px) rotate(35deg);
+    }
+}
+
+/* =====================================
+   BOTTOM DETAILS
+===================================== */
+
+.hero-bottom {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    margin-top: 28px;
+    padding-top: 23px;
+    gap: 20px;
+    animation: contentEnter 1.3s ease both;
+    animation-delay: 0.4s;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-label {
+    color: #85817a;
+    font-size: 9px;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    color: #e9e4dc;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+/* =====================================
+   SCROLL INDICATOR
+===================================== */
+
+.scroll-indicator {
+    position: absolute;
+    right: 8%;
+    bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #77736d;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 35px;
+    height: 1px;
+    background: var(--gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: white;
+    animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+    to {
+        left: 100%;
+    }
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 1100px) {
+
+    .header {
         padding: 0 5%;
     }
 
-    .mn-header-inner {
+    .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+        gap: 25px;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 5.5vw, 64px);
+    }
+
+    .visual-stage {
+        min-height: 490px;
+    }
+
+    .code-card {
+        left: -10px;
+    }
+
+    .wordpress-card {
+        right: -5px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .header {
+        height: auto;
         min-height: 80px;
-
-        flex-direction: column;
-        justify-content: center;
-
-        gap: 17px;
-        padding: 16px 0;
+        padding: 20px 6%;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 
-    .mn-logo {
-        font-size: 18px;
-    }
-
-    .mn-nav {
+    .nav-menu {
+        order: 3;
         width: 100%;
         justify-content: space-between;
-        gap: 5px;
+        gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 5px;
     }
 
-    .mn-nav a {
-        font-size: 8px;
-        letter-spacing: .5px;
+    .nav-menu a {
+        font-size: 10px;
+        white-space: nowrap;
     }
 
-    .mn-nav .mn-contact {
-        padding: 0;
-        border: 0;
-    }
-
-    .mn-main {
-        padding: 110px 6% 90px;
-    }
-
-    .mn-label {
+    .header-contact {
+        padding: 9px 13px;
         font-size: 9px;
-        letter-spacing: 2.5px;
-        margin-bottom: 27px;
     }
 
-    .mn-label::before,
-    .mn-label::after {
-        width: 17px;
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 65px 7% 50px;
+        gap: 25px;
     }
 
-    .mn-heading {
-        font-size: clamp(43px, 10.5vw, 65px);
+    .hero-content {
+        max-width: 650px;
+    }
+
+    .hero h1 {
+        font-size: clamp(45px, 9vw, 68px);
         letter-spacing: -2.5px;
+    }
+
+    .hero-description {
+        max-width: 520px;
+    }
+
+    .visual-stage {
+        min-height: 480px;
+        max-height: 540px;
+        margin-top: 5px;
+    }
+
+    .browser-scene {
+        width: min(88%, 530px);
+    }
+
+    .code-card {
+        left: 0;
+        bottom: 35px;
+    }
+
+    .wordpress-card {
+        right: 0;
+        top: 35px;
+    }
+
+    .tag-responsive {
+        left: 0;
+        top: 80px;
+    }
+
+    .tag-elementor {
+        right: 0;
+        bottom: 100px;
+    }
+
+    .hero-bottom {
+        margin-top: 20px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .header {
+        padding: 18px 6%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .nav-menu {
+        gap: 19px;
+    }
+
+    .nav-menu a {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+    }
+
+    .hero {
+        padding: 55px 6% 40px;
+    }
+
+    .hero-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+        margin-bottom: 22px;
+    }
+
+    .hero h1 {
+        font-size: clamp(39px, 11vw, 54px);
+        letter-spacing: -2px;
         line-height: 1.15;
     }
 
-    .mn-description {
-        max-width: 390px;
-        font-size: 12px;
-        line-height: 1.9;
+    .hero-description {
+        font-size: 13px;
+        line-height: 1.85;
     }
 
-    .mn-actions {
-        flex-direction: column;
-        width: 100%;
-        max-width: 300px;
+    .hero-buttons {
+        gap: 10px;
     }
 
-    .mn-btn {
-        width: 100%;
+    .primary-btn,
+    .secondary-btn {
+        padding: 14px 15px;
+        font-size: 9px;
     }
 
-    .mn-scroll {
-        margin-top: 55px;
+    .hero-note {
+        font-size: 9px;
+        margin-top: 27px;
     }
 
-    .mn-bottom {
-        padding: 23px 7%;
-        flex-wrap: wrap;
-        gap: 22px;
+    .visual-stage {
+        min-height: 355px;
+        max-height: 390px;
+        margin-left: -5px;
+        margin-right: -5px;
     }
 
-    .mn-info {
-        width: calc(50% - 12px);
+    .browser-scene {
+        width: 94%;
     }
-}
 
-/* ==========================================
-   SMALL MOBILE
-========================================== */
+    .browser-window {
+        min-height: 270px;
+    }
 
-@media (max-width: 380px) {
+    .browser-top {
+        height: 34px;
+    }
 
-    .mn-nav a {
+    .website-preview {
+        padding: 18px 15px;
+        min-height: 235px;
+    }
+
+    .preview-nav {
+        margin-bottom: 25px;
+    }
+
+    .preview-image {
+        height: 125px;
+    }
+
+    .preview-bottom {
+        margin-top: 17px;
+    }
+
+    .code-card {
+        width: 145px;
+        padding: 11px;
+        left: -4px;
+        bottom: 15px;
+    }
+
+    .code-title {
         font-size: 7px;
-        letter-spacing: .2px;
+        margin-bottom: 10px;
     }
 
-    .mn-heading {
-        font-size: 40px;
+    .code-lines {
+        gap: 7px;
     }
 
-    .mn-label {
-        letter-spacing: 1.8px;
+    .wordpress-card {
+        width: 82px;
+        height: 82px;
+        right: -2px;
+        top: 12px;
+        gap: 5px;
+    }
+
+    .wp-symbol {
+        width: 31px;
+        height: 31px;
+        font-size: 19px;
+    }
+
+    .wordpress-card small {
+        font-size: 6px;
+    }
+
+    .tool-tag {
+        font-size: 7px;
+        padding: 7px 9px;
+    }
+
+    .tag-responsive {
+        top: 55px;
+        left: -2px;
+    }
+
+    .tag-elementor {
+        bottom: 75px;
+        right: -2px;
+    }
+
+    .hero-bottom {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 23px;
+        column-gap: 12px;
+        margin-top: 12px;
+    }
+
+    .detail-label {
+        font-size: 8px;
+    }
+
+    .detail-value {
+        font-size: 12px;
     }
 }
 
-/* ==========================================
-   ACCESSIBILITY
-========================================== */
+/* =====================================
+   REDUCED MOTION ACCESSIBILITY
+===================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
     *::after {
-        animation-duration: .01ms !important;
+        animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
@@ -888,160 +1357,252 @@ a {
 
 <body>
 
-<section class="mn-hero" id="home">
-
-    <!-- BACKGROUND EFFECTS -->
-
-    <div class="mn-bg"></div>
-    <div class="mn-grid"></div>
-    <div class="mn-particles"></div>
-    <div class="mn-light-sweep"></div>
+<!-- BACKGROUND -->
+<div class="site-background">
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <div class="background-grid"></div>
+</div>
 
 
-    <!-- HEADER -->
+<!-- HEADER -->
+<header class="header">
 
-    <header class="mn-header">
+    <a href="#home" class="logo">
+        MUNNI <span>NK.</span>
+    </a>
 
-        <div class="mn-header-inner">
+    <nav class="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Project</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-            <a href="#home" class="mn-logo">
-                MUNNI NK<span>.</span>
-            </a>
+    <a href="#contact" class="header-contact">
+        Let's Talk
+    </a>
 
-            <nav class="mn-nav">
-
-                <a href="#home">Home</a>
-
-                <a href="#about">About</a>
-
-                <a href="#skills">Skills</a>
-
-                <a href="#projects">Project</a>
-
-                <a href="#contact" class="mn-contact">
-                    Contact
-                </a>
-
-            </nav>
-
-        </div>
-
-    </header>
+</header>
 
 
-    <!-- CENTERED HERO CONTENT -->
+<!-- HERO SECTION -->
+<main class="hero" id="home">
 
-    <main class="mn-main">
+    <!-- LEFT CONTENT -->
+    <div class="hero-content">
 
-        <div class="mn-label mn-reveal">
+        <div class="hero-label">
+            <span></span>
             WORDPRESS DEVELOPER
         </div>
 
-
-        <h1 class="mn-heading mn-reveal">
-
-            Websites crafted
+        <h1>
+            Designing digital
             <br>
-
-            with precision.
+            experiences that
             <br>
-
-            <span>Built to impress.</span>
-
+            <span class="gold-text">make an impact.</span>
         </h1>
 
-
-        <p class="mn-description mn-reveal">
-
-            Creating modern, responsive websites with
-            WordPress and Elementor, bringing together
-            thoughtful design and seamless functionality.
-
+        <p class="hero-description">
+            I build modern, responsive and engaging websites
+            using WordPress and Elementor — combining thoughtful
+            design with seamless functionality.
         </p>
 
+        <div class="hero-buttons">
 
-        <div class="mn-actions mn-reveal">
-
-            <a href="#projects" class="mn-btn mn-primary">
-                Explore Projects <span>↗</span>
+            <a href="#projects" class="primary-btn">
+                Explore My Work
+                <span>↗</span>
             </a>
 
-            <a href="#contact" class="mn-btn mn-secondary">
-                Get in Touch <span>→</span>
+            <a href="#contact" class="secondary-btn">
+                Get In Touch
+                <span>↗</span>
             </a>
 
         </div>
 
-
-        <div class="mn-scroll mn-reveal">
-
-            <span>Scroll to explore</span>
-
-            <div class="mn-scroll-line"></div>
-
-        </div>
-
-    </main>
-
-
-    <!-- BOTTOM DETAILS -->
-
-    <div class="mn-bottom">
-
-        <div class="mn-info">
-
-            <span class="mn-info-label">
-                Specialisation
-            </span>
-
-            <span class="mn-info-value">
-                WordPress Development
-            </span>
-
-        </div>
-
-
-        <div class="mn-info">
-
-            <span class="mn-info-label">
-                Experience
-            </span>
-
-            <span class="mn-info-value">
-                1–2 Years
-            </span>
-
-        </div>
-
-
-        <div class="mn-info">
-
-            <span class="mn-info-label">
-                Core Tools
-            </span>
-
-            <span class="mn-info-value">
-                WordPress / Elementor
-            </span>
-
-        </div>
-
-
-        <div class="mn-info">
-
-            <span class="mn-info-label">
-                Focus
-            </span>
-
-            <span class="mn-info-value">
-                Design / Development
-            </span>
-
+        <div class="hero-note">
+            <span class="status-dot"></span>
+            AVAILABLE FOR NEW OPPORTUNITIES
         </div>
 
     </div>
 
-</section>
+
+    <!-- RIGHT ANIMATION -->
+    <div class="visual-stage">
+
+        <div class="stage-light"></div>
+
+        <div class="light-streak streak-one"></div>
+        <div class="light-streak streak-two"></div>
+
+        <!-- Floating responsive label -->
+        <div class="tool-tag tag-responsive">
+            Responsive Design
+        </div>
+
+        <!-- Main website preview -->
+        <div class="browser-scene">
+
+            <div class="browser-window">
+
+                <div class="browser-top">
+
+                    <div class="browser-dots">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                    <div class="browser-address">
+                        YOUR NEXT WEBSITE
+                    </div>
+
+                    <div class="browser-menu-icon">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                </div>
+
+
+                <div class="website-preview">
+
+                    <div class="preview-nav">
+
+                        <div class="preview-logo"></div>
+
+                        <div class="preview-links">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="preview-hero">
+
+                        <div class="preview-copy">
+
+                            <div class="preview-eyebrow"></div>
+
+                            <div class="preview-heading">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="preview-paragraph">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="preview-button"></div>
+
+                        </div>
+
+
+                        <div class="preview-image">
+                            <div class="image-shine"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="preview-bottom">
+                        <div class="preview-card"></div>
+                        <div class="preview-card"></div>
+                        <div class="preview-card"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Floating code window -->
+        <div class="code-card">
+
+            <div class="code-title">
+                <span>✦</span>
+                Building Experience
+                <span>•••</span>
+            </div>
+
+            <div class="code-lines">
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+            </div>
+
+        </div>
+
+
+        <!-- WordPress floating card -->
+        <div class="wordpress-card">
+
+            <div class="wp-symbol">W</div>
+
+            <small>WordPress</small>
+
+        </div>
+
+
+        <!-- Elementor floating label -->
+        <div class="tool-tag tag-elementor">
+            Elementor Pro
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM INFORMATION -->
+    <div class="hero-bottom">
+
+        <div class="detail-item">
+            <span class="detail-label">Specialisation</span>
+            <span class="detail-value">WordPress Development</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Experience</span>
+            <span class="detail-value">1–2 Years</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Core Tools</span>
+            <span class="detail-value">WordPress / Elementor</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Approach</span>
+            <span class="detail-value">Design & Development</span>
+        </div>
+
+    </div>
+
+
+    <!-- SCROLL INDICATOR -->
+    <div class="scroll-indicator">
+        Scroll to explore
+        <span class="scroll-line"></span>
+    </div>
+
+</main>
+
 
 </body>
 </html>
