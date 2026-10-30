@@ -113,11 +113,9 @@ img {
 /* HEADER */
 
 .header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 1000;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(18px);
+  background: #ffffff;
   border-bottom: 1px solid rgba(32,33,30,.07);
 }
 
@@ -645,211 +643,115 @@ img {
 
 /* PROJECTS */
 
-.projects-section {
-  background: var(--white);
-}
-
+.projects-section { background: var(--white); }
 .projects-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 30px;
-  margin-bottom: 42px;
+  display:flex; justify-content:space-between; align-items:end;
+  gap:30px; margin-bottom:30px;
 }
-
-.projects-header .section-intro {
-  max-width: 350px;
+.projects-header .section-intro { max-width:350px; }
+.project-count { color:#85877d; font-size:11px; margin-top:12px; }
+.project-tabs {
+  display:flex; flex-wrap:wrap; gap:9px; margin:0 0 34px;
 }
-
-.project-count {
-  color: #85877d;
-  font-size: 11px;
-  margin-top: 12px;
+.project-tab {
+  border:1px solid var(--line); background:#fff; color:#62645c;
+  border-radius:999px; padding:10px 15px; font-size:11px;
+  font-weight:600; cursor:pointer; transition:all .25s;
 }
-
+.project-tab:hover, .project-tab.active {
+  background:var(--ink); border-color:var(--ink); color:#fff;
+}
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px 26px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px 26px;
 }
-
-.project-card {
-  min-width: 0;
-}
-
+.project-card { min-width:0; animation:riseIn .45s both; }
+.project-card[hidden] { display:none !important; }
 .project-visual {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1.58 / 1;
-  border: 1px solid #e7e8e1;
-  border-radius: 15px;
-  background: #e8e9e2;
-  isolation: isolate;
+  position:relative; overflow:hidden; aspect-ratio:1.58 / 1;
+  border:1px solid #e7e8e1; border-radius:15px; background:#e8e9e2; isolation:isolate;
 }
-
+.project-image-link { display:block; color:inherit; }
 .project-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .7s cubic-bezier(.2,.7,.2,1);
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .7s cubic-bezier(.2,.7,.2,1);
 }
-
-.project-card:hover .project-visual img {
-  transform: scale(1.045);
-}
-
+.project-card:hover .project-visual img { transform:scale(1.045); }
 .project-number {
-  position: absolute;
-  z-index: 2;
-  top: 15px;
-  left: 15px;
-  background: rgba(255,255,255,.9);
-  padding: 7px 10px;
-  border-radius: 6px;
-  font-size: 9px;
-  letter-spacing: 1px;
-  font-weight: 700;
+  position:absolute; z-index:2; top:15px; left:15px;
+  background:rgba(255,255,255,.92); padding:7px 10px; border-radius:6px;
+  font-size:9px; letter-spacing:1px; font-weight:700;
 }
-
-.project-fallback {
-  display: none;
-  position: absolute;
-  inset: 0;
-  padding: 30px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  color: white;
-  background: linear-gradient(135deg, #252922, #687451);
+.project-model {
+  position:absolute; z-index:2; right:15px; top:15px;
+  background:rgba(32,33,30,.86); color:white; padding:7px 10px;
+  border-radius:6px; font-size:9px; letter-spacing:.5px;
 }
-
-.fallback-kicker {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.fallback-title {
-  font-family: "Manrope", sans-serif;
-  font-size: clamp(25px, 3vw, 44px);
-  line-height: 1.05;
-  font-weight: 800;
-  margin-top: 17px;
-}
-
-.fallback-bottom {
-  font-size: 10px;
-  margin-top: 22px;
-  color: rgba(255,255,255,.75);
-}
-
 .project-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  padding-top: 18px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:18px; padding-top:17px;
 }
-
+.project-info { min-width:0; }
 .project-category {
-  color: var(--green-dark);
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  font-size: 9px;
-  font-weight: 700;
+  color:var(--green-dark); text-transform:uppercase; letter-spacing:1.4px;
+  font-size:9px; font-weight:700;
 }
-
 .project-content h3 {
-  font-family: "Manrope", sans-serif;
-  font-size: 19px;
-  line-height: 1.4;
-  margin-top: 6px;
-  font-weight: 800;
+  font-family:"Manrope",sans-serif; font-size:19px; line-height:1.4;
+  margin-top:6px; font-weight:800;
 }
-
 .project-content p {
-  max-width: 450px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.85;
-  margin-top: 7px;
+  max-width:450px; color:var(--muted); font-size:12px;
+  line-height:1.85; margin-top:7px;
 }
-
 .project-open {
-  flex: 0 0 42px;
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  font-size: 17px;
-  transition: .3s;
+  flex:0 0 42px; width:42px; height:42px; display:grid; place-items:center;
+  border:1px solid var(--line); border-radius:50%; font-size:17px; transition:.3s;
 }
-
 .project-open:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: white;
-  transform: rotate(45deg);
+  background:var(--ink); border-color:var(--ink); color:white; transform:rotate(45deg);
 }
+.projects-empty { display:none; padding:25px 0; color:var(--muted); font-size:13px; }
 
-/* EXTRA PROJECTS ARE HIDDEN UNTIL BUTTON CLICK */
-
-.extra-project {
-  display: none;
-}
-
-.extra-project.visible {
-  display: block;
-  animation: riseIn .55s both;
-}
-
-.view-more-wrap {
+.projects-more-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 48px;
+  margin-top: 42px;
 }
 
-.view-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  padding: 14px 22px;
-  border: 1px solid #d9dbd1;
-  border-radius: 8px;
+.projects-more-button {
+  border: 1px solid var(--ink);
   background: transparent;
   color: var(--ink);
-  font-size: 11px;
-  font-weight: 700;
+  border-radius: 999px;
+  padding: 13px 25px;
+  font: 700 11px "DM Sans", sans-serif;
   cursor: pointer;
-  transition: .3s;
+  transition: background .25s, color .25s, transform .25s;
 }
 
-.view-more:hover {
+.projects-more-button:hover {
   background: var(--ink);
-  color: white;
-  border-color: var(--ink);
-}
-
-.view-more span:last-child {
-  font-size: 17px;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 /* CONTACT */
+/* CONTACT */
 
 .contact-section {
-  background: #20221f;
-  color: white;
+  background: #ffffff;
+  color: var(--ink);
   padding-bottom: 28px;
 }
 
 .contact-section .section-kicker {
-  color: var(--green);
+  color: var(--green-dark);
 }
 
 .contact-section .section-heading span {
-  color: #aeb3a3;
+  color: #85877c;
 }
 
 .contact-layout {
@@ -861,7 +763,7 @@ img {
 
 .contact-message {
   max-width: 450px;
-  color: #b8bbb2;
+  color: var(--muted);
   font-size: 13px;
   line-height: 1.95;
   margin-top: 23px;
@@ -875,7 +777,7 @@ img {
 }
 
 .contact-detail-label {
-  color: #aeb3a3;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 9px;
@@ -905,13 +807,13 @@ img {
   gap: 18px;
   margin-top: 100px;
   padding-top: 23px;
-  border-top: 1px solid rgba(255,255,255,.13);
-  color: #aeb3a3;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
   font-size: 10px;
 }
 
 .back-top {
-  color: white;
+  color: var(--ink);
   transition: color .25s;
 }
 
@@ -1039,6 +941,8 @@ img {
   }
 
   .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-tabs { gap: 8px; }
+  .project-tab { padding: 9px 12px; }
   .project-grid { gap: 34px 18px; }
   .project-content { align-items: flex-start; }
   .project-content h3 { font-size: 16px; }
@@ -1065,6 +969,27 @@ img {
   .project-content h3 { font-size: 17px; }
   .project-content p { font-size: 12px; }
   .project-open { width: 38px; height: 38px; }
+}
+
+@media (max-width: 1000px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .contact-bottom {
+    margin-top: 60px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1324,404 +1249,267 @@ img {
 </section>
 
 <!-- PROJECTS SECTION -->
-
 <section class="projects-section section" id="projects">
   <div class="container">
-
     <div class="projects-header">
       <div class="reveal">
         <p class="section-kicker">Selected work</p>
-
-        <h2 class="section-heading">
-          Ideas made <span>digital.</span>
-        </h2>
-
-        <p class="project-count" id="projectCount">
-          Showing 4 featured projects
-        </p>
+        <h2 class="section-heading">Ideas made <span>digital.</span></h2>
+        <p class="project-count" id="projectCount">Showing 13 projects</p>
       </div>
-
       <p class="section-intro reveal reveal-delay-1">
         A selection of websites, redesigns and page-building work.
-        Explore the projects below to see the range of work.
+        Choose a category to explore different types of projects.
       </p>
     </div>
 
+    <div class="project-tabs" role="group" aria-label="Filter projects">
+      <button class="project-tab active" type="button" data-filter="all" aria-pressed="true">All Projects</button>
+      <button class="project-tab" type="button" data-filter="corporate" aria-pressed="false">Corporate &amp; Industrial</button>
+      <button class="project-tab" type="button" data-filter="technology" aria-pressed="false">Technology &amp; Engineering</button>
+      <button class="project-tab" type="button" data-filter="business" aria-pressed="false">Business &amp; Consultancy</button>
+      <button class="project-tab" type="button" data-filter="lifestyle" aria-pressed="false">Interiors &amp; Lifestyle</button>
+      <button class="project-tab" type="button" data-filter="wix" aria-pressed="false">Wix Websites</button>
+    </div>
     <div class="project-grid" id="projectGrid">
-
-      <!-- PROJECT 01: CITY GATE -->
-
-      <article class="project-card reveal">
-        <a href="https://citygategroup.com/" target="_blank"
-           rel="noopener noreferrer"
-           aria-label="View City Gate Group website">
-
+      <article class="project-card reveal" data-category="corporate">
+        <a class="project-image-link" href="https://citygategroup.com/" target="_blank" rel="noopener noreferrer" aria-label="View City Gate Group website">
           <div class="project-visual">
             <span class="project-number">PROJECT 01</span>
-
-            <img
-              src="city gate banner.jpg.png"
-              alt="City Gate Group website preview"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-            <div class="project-fallback">
-              <span class="fallback-kicker">Corporate Website</span>
-              <span class="fallback-title">City Gate<br>Group</span>
-              <span class="fallback-bottom">WordPress · Elementor</span>
-            </div>
+            <span class="project-model">WordPress</span>
+            <img src="assets/city gate banner.jpg.png" alt="City Gate Group website preview" loading="lazy">
           </div>
         </a>
-
         <div class="project-content">
-          <div>
-            <span class="project-category">Corporate Website</span>
+          <div class="project-info">
+            <span class="project-category">Corporate & Industrial</span>
             <h3>City Gate Group</h3>
-            <p>
-              Corporate website development, service pages and a
-              professional industrial brand presentation.
-            </p>
+            <p>Corporate website development, service pages and a professional industrial brand presentation.</p>
           </div>
-
-          <a class="project-open"
-             href="https://citygategroup.com/"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Open City Gate Group">↗</a>
+          <a class="project-open" href="https://citygategroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Open City Gate Group website">↗</a>
         </div>
       </article>
 
-      <!-- PROJECT 02: GAMATECH -->
-
-      <article class="project-card reveal reveal-delay-1">
-        <a href="https://gamatechenergy.com/home/" target="_blank"
-           rel="noopener noreferrer"
-           aria-label="View GAMATECH Energy website">
-
+      <article class="project-card reveal" data-category="technology">
+        <a class="project-image-link" href="https://www.nextgentechnology.ae/" target="_blank" rel="noopener noreferrer" aria-label="View NextGen Technology website">
           <div class="project-visual">
             <span class="project-number">PROJECT 02</span>
-
-            <img
-              src="assets/gamatech.jpg"
-              alt="GAMATECH Energy website preview"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-            <div class="project-fallback">
-              <span class="fallback-kicker">Energy &amp; Engineering</span>
-              <span class="fallback-title">GAMA<br>TECH</span>
-              <span class="fallback-bottom">WordPress · Elementor</span>
-            </div>
+            <span class="project-model">Website</span>
+            <img src="assets/nextgen banner.jpg" alt="NextGen Technology website preview" loading="lazy">
           </div>
         </a>
-
         <div class="project-content">
-          <div>
-            <span class="project-category">Energy &amp; Engineering</span>
+          <div class="project-info">
+            <span class="project-category">Technology & Engineering</span>
+            <h3>NextGen Technology</h3>
+            <p>Technology-focused website presenting services and business solutions.</p>
+          </div>
+          <a class="project-open" href="https://www.nextgentechnology.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open NextGen Technology website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="technology">
+        <a class="project-image-link" href="https://www.evoraet.com/" target="_blank" rel="noopener noreferrer" aria-label="View Evora ET website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 03</span>
+            <span class="project-model">Website</span>
+            <img src="assets/evora banner.jpg.png" alt="Evora ET website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Technology & Engineering</span>
+            <h3>Evora ET</h3>
+            <p>Website project with a clear layout and professional brand presentation.</p>
+          </div>
+          <a class="project-open" href="https://www.evoraet.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Evora ET website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="corporate">
+        <a class="project-image-link" href="https://www.rcbmaterials.com/" target="_blank" rel="noopener noreferrer" aria-label="View RCB Materials website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 04</span>
+            <span class="project-model">Website</span>
+            <img src="assets/rcb banner.jpg" alt="RCB Materials website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Corporate & Industrial</span>
+            <h3>RCB Materials</h3>
+            <p>Corporate website showcasing materials, services and company information.</p>
+          </div>
+          <a class="project-open" href="https://www.rcbmaterials.com/" target="_blank" rel="noopener noreferrer" aria-label="Open RCB Materials website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="business">
+        <a class="project-image-link" href="https://www.primaxis.in/" target="_blank" rel="noopener noreferrer" aria-label="View Primaxis website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 05</span>
+            <span class="project-model">Website</span>
+            <img src="assets/primaxis banner.jpg" alt="Primaxis website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Business & Consultancy</span>
+            <h3>Primaxis</h3>
+            <p>Business website with structured content and a professional visual style.</p>
+          </div>
+          <a class="project-open" href="https://www.primaxis.in/" target="_blank" rel="noopener noreferrer" aria-label="Open Primaxis website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="business">
+        <a class="project-image-link" href="https://www.thezenithventures.com/" target="_blank" rel="noopener noreferrer" aria-label="View The Zenith Ventures website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 06</span>
+            <span class="project-model">Website</span>
+            <img src="assets/zenith banner.jpg" alt="The Zenith Ventures website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Business & Consultancy</span>
+            <h3>The Zenith Ventures</h3>
+            <p>Business-focused website presenting the company and its services.</p>
+          </div>
+          <a class="project-open" href="https://www.thezenithventures.com/" target="_blank" rel="noopener noreferrer" aria-label="Open The Zenith Ventures website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="business">
+        <a class="project-image-link" href="https://www.wap-ads.com/CBS/" target="_blank" rel="noopener noreferrer" aria-label="View CBS website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 07</span>
+            <span class="project-model">Website</span>
+            <img src="assets/cbs banner.jpg.png" alt="CBS website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Business & Consultancy</span>
+            <h3>CBS</h3>
+            <p>Website project focused on presenting services and information clearly.</p>
+          </div>
+          <a class="project-open" href="https://www.wap-ads.com/CBS/" target="_blank" rel="noopener noreferrer" aria-label="Open CBS website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="technology">
+        <a class="project-image-link" href="https://marstechme.com/" target="_blank" rel="noopener noreferrer" aria-label="View MarsTech ME website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 08</span>
+            <span class="project-model">Website</span>
+            <img src="assets/marstech banner.jpg" alt="MarsTech ME website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Technology & Engineering</span>
+            <h3>MarsTech ME</h3>
+            <p>Technology and engineering website with service-focused content.</p>
+          </div>
+          <a class="project-open" href="https://marstechme.com/" target="_blank" rel="noopener noreferrer" aria-label="Open MarsTech ME website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="business">
+        <a class="project-image-link" href="https://www.sacredaccounting.ae/" target="_blank" rel="noopener noreferrer" aria-label="View Sacred Accounting website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 09</span>
+            <span class="project-model">Website</span>
+            <img src="assets/sacred accounting banner.jpg.png" alt="Sacred Accounting website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Business & Consultancy</span>
+            <h3>Sacred Accounting</h3>
+            <p>Accounting business website with a clean and professional presentation.</p>
+          </div>
+          <a class="project-open" href="https://www.sacredaccounting.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open Sacred Accounting website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="lifestyle">
+        <a class="project-image-link" href="https://inlitefurnishing.com/" target="_blank" rel="noopener noreferrer" aria-label="View Inlite Furnishing website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 10</span>
+            <span class="project-model">Website</span>
+            <img src="assets/inlite furnishing banner.jpg.png" alt="Inlite Furnishing website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Interiors & Lifestyle</span>
+            <h3>Inlite Furnishing</h3>
+            <p>Furnishing website presenting interiors and related offerings.</p>
+          </div>
+          <a class="project-open" href="https://inlitefurnishing.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Inlite Furnishing website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="business">
+        <a class="project-image-link" href="https://satconsultancy.ae/" target="_blank" rel="noopener noreferrer" aria-label="View SAT Consultancy website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 11</span>
+            <span class="project-model">Website</span>
+            <img src="assets/sat consultancy banner.jpg" alt="SAT Consultancy website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Business & Consultancy</span>
+            <h3>SAT Consultancy</h3>
+            <p>Consultancy website organised around company services and information.</p>
+          </div>
+          <a class="project-open" href="https://satconsultancy.ae/" target="_blank" rel="noopener noreferrer" aria-label="Open SAT Consultancy website">↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" data-category="technology">
+        <a class="project-image-link" href="https://www.nextgentechnology.ae/gamatech/" target="_blank" rel="noopener noreferrer" aria-label="View GAMATECH Energy website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 12</span>
+            <span class="project-model">WordPress</span>
+            <img src="assets/gamatech banner.jpg.png" alt="GAMATECH Energy website preview" loading="lazy">
+          </div>
+        </a>
+        <div class="project-content">
+          <div class="project-info">
+            <span class="project-category">Technology & Engineering</span>
             <h3>GAMATECH Energy</h3>
-            <p>
-              Website redesign with a bold industrial look, structured
-              content and responsive layouts.
-            </p>
+            <p>Energy and engineering website redesign with a bold industrial look and responsive layouts.</p>
           </div>
-
-          <a class="project-open"
-             href="https://gamatechenergy.com/home/"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Open GAMATECH Energy">↗</a>
+          <a class="project-open" href="https://www.nextgentechnology.ae/gamatech/" target="_blank" rel="noopener noreferrer" aria-label="Open GAMATECH Energy website">↗</a>
         </div>
       </article>
 
-      <!-- PROJECT 03 -->
-
-      <article class="project-card reveal">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 03</span>
-
-          <img
-            src="assets/other-wordpress.jpg"
-            alt="WordPress website project preview"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Web Development</span>
-            <span class="fallback-title">WordPress<br>Projects</span>
-            <span class="fallback-bottom">Responsive · Web Design</span>
+      <article class="project-card reveal" data-category="wix">
+        <a class="project-image-link" href="https://www.dcruzpd.com/" target="_blank" rel="noopener noreferrer" aria-label="View D'Cruz PD website">
+          <div class="project-visual">
+            <span class="project-number">PROJECT 13</span>
+            <span class="project-model">Wix</span>
+            <img src="assets/dcruz banner.jpg" alt="D'Cruz PD website preview" loading="lazy">
           </div>
-        </div>
-
+        </a>
         <div class="project-content">
-          <div>
-            <span class="project-category">Web Development</span>
-            <h3>Other WordPress Projects</h3>
-            <p>
-              Additional page designs, responsive layouts and website
-              improvements.
-            </p>
+          <div class="project-info">
+            <span class="project-category">Wix Website</span>
+            <h3>D'Cruz PD</h3>
+            <p>Wix website design and visual page presentation.</p>
           </div>
+          <a class="project-open" href="https://www.dcruzpd.com/" target="_blank" rel="noopener noreferrer" aria-label="Open D'Cruz PD website">↗</a>
         </div>
       </article>
-
-      <!-- PROJECT 04 -->
-
-      <article class="project-card reveal reveal-delay-1">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 04</span>
-
-          <img
-            src="assets/project-04.jpg"
-            alt="Website project 4 preview"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Web Design</span>
-            <span class="fallback-title">Creative<br>Web Design</span>
-            <span class="fallback-bottom">Responsive · Layouts</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Design Project</h3>
-            <p>
-              Responsive page layout and visual presentation for a web project.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 05 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 05</span>
-          <img src="assets/project-05.jpg"
-               alt="Website project 5 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Five</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 05</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 06 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 06</span>
-          <img src="assets/project-06.jpg"
-               alt="Website project 6 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Six</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 06</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 07 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 07</span>
-          <img src="assets/project-07.jpg"
-               alt="Website project 7 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Seven</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 07</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 08 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 08</span>
-          <img src="assets/project-08.jpg"
-               alt="Website project 8 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Eight</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 08</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 09 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 09</span>
-          <img src="assets/project-09.jpg"
-               alt="Website project 9 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Nine</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 09</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 10 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 10</span>
-          <img src="assets/project-10.jpg"
-               alt="Website project 10 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Ten</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 10</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 11 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 11</span>
-          <img src="assets/project-11.jpg"
-               alt="Website project 11 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Eleven</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 11</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 12 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 12</span>
-          <img src="assets/project-12.jpg"
-               alt="Website project 12 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Twelve</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 12</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 13 -->
-
-      <article class="project-card extra-project">
-        <div class="project-visual">
-          <span class="project-number">PROJECT 13</span>
-          <img src="assets/project-13.jpg"
-               alt="Website project 13 preview"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-          <div class="project-fallback">
-            <span class="fallback-kicker">Website Project</span>
-            <span class="fallback-title">Project<br>Thirteen</span>
-            <span class="fallback-bottom">Add your screenshot</span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <div>
-            <span class="project-category">Web Design</span>
-            <h3>Website Project 13</h3>
-            <p>Replace with the real project name and description.</p>
-          </div>
-        </div>
-      </article>
-
     </div>
-
-    <div class="view-more-wrap">
-      <button class="view-more" id="viewMoreBtn" aria-expanded="false">
-        <span id="viewMoreText">View More Projects</span>
-        <span id="viewMoreArrow" aria-hidden="true">↓</span>
-      </button>
+    <div class="projects-more-wrap" id="projectsMoreWrap">
+      <button class="projects-more-button" id="projectsMoreButton" type="button" aria-expanded="false">View More Projects</button>
     </div>
-
+    <p class="projects-empty" id="projectsEmpty">No projects found in this category.</p>
   </div>
 </section>
 
@@ -1806,47 +1594,69 @@ navLinks.querySelectorAll("a").forEach(link => {
   });
 });
 
-/* VIEW MORE PROJECTS BUTTON */
+/* PROJECT CATEGORY FILTERS + VIEW MORE */
 
-const viewMoreBtn = document.getElementById("viewMoreBtn");
-const viewMoreText = document.getElementById("viewMoreText");
-const viewMoreArrow = document.getElementById("viewMoreArrow");
+const projectTabs = document.querySelectorAll(".project-tab");
+const projectCards = Array.from(document.querySelectorAll(".project-card"));
 const projectCount = document.getElementById("projectCount");
-const extraProjects = document.querySelectorAll(".extra-project");
+const projectsEmpty = document.getElementById("projectsEmpty");
+const projectsMoreWrap = document.getElementById("projectsMoreWrap");
+const projectsMoreButton = document.getElementById("projectsMoreButton");
 
-viewMoreBtn.addEventListener("click", () => {
-  const showMore =
-    viewMoreBtn.getAttribute("aria-expanded") !== "true";
+let selectedCategory = "all";
+let showAllProjects = false;
 
-  extraProjects.forEach((project, index) => {
-    project.classList.toggle("visible", showMore);
+function updateProjects() {
+  const matchingCards = projectCards.filter(card =>
+    selectedCategory === "all" || card.dataset.category === selectedCategory
+  );
 
-    if (showMore) {
-      project.style.animationDelay = `${(index % 4) * 70}ms`;
-    }
+  const visibleLimit = selectedCategory === "all" && !showAllProjects
+    ? 3
+    : matchingCards.length;
+
+  projectCards.forEach(card => {
+    const matches = selectedCategory === "all" || card.dataset.category === selectedCategory;
+    const index = matchingCards.indexOf(card);
+    card.hidden = !matches || index >= visibleLimit;
   });
 
-  viewMoreBtn.setAttribute("aria-expanded", String(showMore));
+  projectCount.textContent =
+    `Showing ${Math.min(visibleLimit, matchingCards.length)} of ${matchingCards.length} projects`;
 
-  viewMoreText.textContent = showMore
-    ? "Show Fewer Projects"
-    : "View More Projects";
+  projectsEmpty.style.display = matchingCards.length === 0 ? "block" : "none";
 
-  viewMoreArrow.textContent = showMore ? "↑" : "↓";
+  const shouldShowButton = selectedCategory === "all" && matchingCards.length > 3;
+  projectsMoreWrap.style.display = shouldShowButton ? "flex" : "none";
+  projectsMoreButton.textContent = showAllProjects ? "View Less" : "View More Projects";
+  projectsMoreButton.setAttribute("aria-expanded", String(showAllProjects));
+}
 
-  projectCount.textContent = showMore
-    ? "Showing all 13 projects"
-    : "Showing 4 featured projects";
+projectTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    selectedCategory = tab.dataset.filter;
+    showAllProjects = false;
 
-  if (!showMore) {
-    document.getElementById("projects").scrollIntoView({
-      behavior: window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches ? "auto" : "smooth",
-      block: "start"
+    projectTabs.forEach(item => {
+      const isActive = item === tab;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
     });
+
+    updateProjects();
+  });
+});
+
+projectsMoreButton.addEventListener("click", () => {
+  showAllProjects = !showAllProjects;
+  updateProjects();
+
+  if (!showAllProjects) {
+    document.getElementById("projects").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 });
+
+updateProjects();
 
 /* CURRENT YEAR */
 
