@@ -265,7 +265,7 @@ button{font:inherit}
   background:#75B9F6;
 }
 
-/* Hero visual */
+/* ORIGINAL HERO DIAGRAM — RETAINED */
 
 .hero-visual{
   position:relative;
@@ -295,7 +295,9 @@ button{font:inherit}
 .hero-visual-ring:before{inset:30px}
 .hero-visual-ring:after{inset:68px}
 
-@keyframes ringRotate{to{transform:rotate(360deg)}}
+@keyframes ringRotate{
+  to{transform:rotate(360deg)}
+}
 
 .hero-visual-content{
   position:relative;
@@ -338,9 +340,7 @@ button{font:inherit}
   box-shadow:0 0 0 5px #75B9F620;
 }
 
-.visual-main{
-  padding:28px 0 24px;
-}
+.visual-main{padding:28px 0 24px}
 
 .visual-main h2{
   font:800 29px/1.2 'Manrope',sans-serif;
@@ -487,7 +487,6 @@ button{font:inherit}
 }
 
 .about-content{max-width:650px}
-
 .about-content h2{margin-bottom:19px}
 
 .about-content p{
@@ -631,13 +630,13 @@ button{font:inherit}
   white-space:nowrap;
 }
 
-/* Three-column project layout */
-
 .projects-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
+
+/* The complete card is a website link */
 
 .project-card{
   position:relative;
@@ -676,9 +675,7 @@ button{font:inherit}
   box-shadow:0 17px 38px rgba(31,57,83,.09);
 }
 
-.project-card:hover:before{
-  width:100%;
-}
+.project-card:hover:before{width:100%}
 
 .project-card:focus-visible{
   outline:3px solid var(--blue);
@@ -698,7 +695,7 @@ button{font:inherit}
   letter-spacing:1.5px;
 }
 
-/* Clickable arrow */
+/* Top-right arrow — part of the clickable website card */
 
 .project-symbol{
   width:36px;
@@ -709,6 +706,7 @@ button{font:inherit}
   border-radius:50%;
   color:var(--blue);
   font-size:17px;
+  line-height:1;
   transition:all .3s ease;
 }
 
@@ -758,13 +756,9 @@ button{font:inherit}
   color:var(--navy);
 }
 
-.project-link span{
-  font-size:14px;
-}
+.project-link span{font-size:14px}
 
-.project-card.hidden-project{
-  display:none;
-}
+.project-card.hidden-project{display:none}
 
 .view-all-wrap{
   display:flex;
@@ -825,11 +819,8 @@ button{font:inherit}
 }
 
 .contact-copy .eyebrow{color:#9BCBF5}
-
 .contact-copy .eyebrow:before{background:#75B9F6}
-
 .contact-copy h2{color:#fff}
-
 .contact-copy h2 span{color:#75B9F6}
 
 .contact-copy p{
@@ -913,9 +904,7 @@ button{font:inherit}
 
 @media(max-width:760px){
   .container{width:min(100% - 36px,560px)}
-
   .site-header{height:70px}
-
   .menu-toggle{display:block}
 
   .nav-links{
@@ -965,12 +954,9 @@ button{font:inherit}
 
   .about-number{font-size:90px}
   .about-side-label{margin-top:5px}
-
   .section{padding:70px 0}
 
-  .projects-top{
-    display:block;
-  }
+  .projects-top{display:block}
 
   .project-count{
     display:inline-block;
@@ -1105,6 +1091,7 @@ button{font:inherit}
       </div>
     </div>
 
+    <!-- ORIGINAL RIGHT-SIDE DIAGRAM -->
     <div class="hero-visual reveal">
       <div class="hero-visual-ring"></div>
 
@@ -1245,7 +1232,7 @@ button{font:inherit}
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- SELECTED WORK -->
 <section class="section projects-section" id="projects">
   <div class="container">
 
@@ -1312,13 +1299,14 @@ button{font:inherit}
     <div class="footer-socials">
       <a href="mailto:munnimujeeb046@gmail.com">Email</a>
       <a href="https://github.com/munnimujeeb"
-         target="_blank" rel="noopener">GitHub</a>
+         target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
 
   </div>
 </footer>
 
 <script>
+
 /* ================= PROJECT DETAILS ================= */
 
 const projects = [
@@ -1394,6 +1382,7 @@ const projects = [
   }
 ];
 
+
 /* ================= RENDER PROJECTS ================= */
 
 const grid = document.getElementById("projectsGrid");
@@ -1401,12 +1390,19 @@ const initialProjects = 6;
 
 projects.forEach((project, index) => {
 
-  const card = document.createElement("article");
+  /* Entire card is a link to the project website */
+  const card = document.createElement("a");
 
   card.className =
     "project-card reveal" +
     (index >= initialProjects ? " hidden-project" : "");
 
+  card.href = project.link;
+  card.target = "_blank";
+  card.rel = "noopener noreferrer";
+  card.setAttribute("aria-label", "Visit " + project.name + " website");
+
+  /* Top row */
   const top = document.createElement("div");
   top.className = "project-card-top";
 
@@ -1414,13 +1410,16 @@ projects.forEach((project, index) => {
   number.className = "project-number";
   number.textContent = "PROJECT / " + String(index + 1).padStart(2, "0");
 
+  /* Top-right arrow is inside the clickable card */
   const symbol = document.createElement("span");
   symbol.className = "project-symbol";
   symbol.textContent = "↗";
+  symbol.setAttribute("aria-hidden", "true");
 
   top.appendChild(number);
   top.appendChild(symbol);
 
+  /* Project information */
   const content = document.createElement("div");
 
   const title = document.createElement("h3");
@@ -1432,24 +1431,25 @@ projects.forEach((project, index) => {
   content.appendChild(title);
   content.appendChild(description);
 
+  /* Bottom website label */
   const bottom = document.createElement("div");
   bottom.className = "project-card-bottom";
 
-  const link = document.createElement("a");
-  link.className = "project-link";
-  link.href = project.link;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.innerHTML = 'Visit Website <span>↗</span>';
+  const linkLabel = document.createElement("span");
+  linkLabel.className = "project-link";
+  linkLabel.innerHTML = 'Visit Website <span>↗</span>';
 
-  bottom.appendChild(link);
+  bottom.appendChild(linkLabel);
 
+  /* Build the complete linked card */
   card.appendChild(top);
   card.appendChild(content);
   card.appendChild(bottom);
 
   grid.appendChild(card);
+
 });
+
 
 /* ================= VIEW ALL / SHOW LESS ================= */
 
@@ -1461,11 +1461,13 @@ viewBtn.addEventListener("click", () => {
     viewBtn.getAttribute("aria-expanded") === "true";
 
   document.querySelectorAll(".hidden-project").forEach(card => {
+
     card.style.display = expanded ? "none" : "flex";
 
     if (!expanded) {
       card.classList.add("visible");
     }
+
   });
 
   viewBtn.setAttribute("aria-expanded", String(!expanded));
@@ -1475,6 +1477,7 @@ viewBtn.addEventListener("click", () => {
     : "Show Less&nbsp; ↑";
 
 });
+
 
 /* ================= MOBILE NAVIGATION ================= */
 
@@ -1508,10 +1511,12 @@ document.querySelectorAll("#navLinks a").forEach(link => {
 
 });
 
+
 /* ================= FOOTER YEAR ================= */
 
 document.getElementById("year").textContent =
   new Date().getFullYear();
+
 
 /* ================= SCROLL REVEAL ================= */
 
@@ -1539,6 +1544,7 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach(item => item.classList.add("visible"));
 
 }
+
 </script>
 
 </body>
